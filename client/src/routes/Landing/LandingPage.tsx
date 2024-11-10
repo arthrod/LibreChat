@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { translations } from './translations';
@@ -10,6 +10,14 @@ export function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState('en');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set initial language based on browser preference
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.startsWith('pt')) {
+      setLang('pt');
+    }
+  }, []);
 
   const t = translations[lang as keyof typeof translations];
   const contactEmail = lang === 'en' ? 'contact@cicero.chat' : 'contato@cicero.chat';

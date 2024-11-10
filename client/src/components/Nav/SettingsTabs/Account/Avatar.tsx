@@ -174,7 +174,7 @@ function Avatar() {
               </div>
               <Button
                 className={cn(
-                  'btn btn-primary mt-4 flex w-full hover:bg-green-600',
+                  'btn btn-primary mt-4 flex w-full hover:bg-[#B80000]',
                   isUploading ? 'cursor-not-allowed opacity-90' : '',
                 )}
                 onClick={handleUpload}

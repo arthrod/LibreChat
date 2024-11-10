@@ -5,21 +5,18 @@ import * as RadixToast from '@radix-ui/react-toast';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider, QueryCache } from '@tanstack/react-query';
-import { ScreenshotProvider, ThemeProvider, useApiErrorBoundary } from './hooks';
+import { ScreenshotProvider, ThemeProvider } from './hooks';
 import { ToastProvider } from './Providers';
 import Toast from './components/ui/Toast';
-import { LiveAnnouncer } from '~/a11y';
+import LiveAnnouncer from './a11y/LiveAnnouncer';
 import { router } from './routes';
 
 export default function App() {
-  const { setError } = useApiErrorBoundary();
-
   const queryClient = new QueryClient({
     queryCache: new QueryCache({
       onError: (error) => {
-        if (error?.response?.status === 401) {
-          setError(error);
-        }
+        // Don't redirect to login on 401, let the router handle it
+        console.error('Query error:', error);
       },
     }),
   });

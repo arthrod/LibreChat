@@ -43,6 +43,14 @@ async function authenticate(config: FullConfig, user: User) {
   });
   try {
     const page = await browser.newPage();
+    await page.goto(baseURL, { timeout });
+    
+    // Click the "Try Now" button on landing page
+    await page.getByRole('button', { name: /try now|sign in/i }).click();
+    await page.waitForURL(`${baseURL}/login`, { timeout });
+    
+    // Continue with existing registration flow
+    await register(page, user);
     console.log('🤖: 🗝  authenticating user:', user.email);
 
     if (!baseURL) {
@@ -87,7 +95,7 @@ async function authenticate(config: FullConfig, user: User) {
     // await browser.close();
     // console.log('🤖: global setup has been finished');
   } finally {
-    await browser.close();
+    await browser.close();  
     console.log('🤖: global setup has been finished');
   }
 }

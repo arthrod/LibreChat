@@ -1,4 +1,4 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link } from 'react-router-dom';
 import { useAuthContext } from '~/hooks/AuthContext';
 import type { TLoginLayoutContext } from '~/common';
 import { ErrorMessage } from '~/components/Auth/ErrorMessage';
@@ -26,9 +26,9 @@ function Login() {
         <p className="my-4 text-center text-sm font-light text-gray-700 dark:text-white">
           {' '}
           {localize('com_auth_no_account')}{' '}
-          <a href="/register" className="p-1 text-green-500">
+          <Link to="/register" className="p-1 text-[#FF4040]">
             {localize('com_auth_sign_up')}
-          </a>
+          </Link>
         </p>
       )}
     </>

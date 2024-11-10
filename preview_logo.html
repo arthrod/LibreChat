@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Preview</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #1a1a1a;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF4040;
+            border-radius: 50%;
+            right: -3px;
+            top: -3px;
+            box-shadow: 0 0 0 2px #1a1a1a;
+        }
+        .text {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #FF4040 0%, #B80000 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-top: 8px;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        label {
+            color: white;
+            min-width: 100px;
+        }
+        input {
+            width: 60px;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .output {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label>Logo Size:</label>
+            <input type="number" id="logoSize" value="40" min="20" max="100">
+        </div>
+        <div class="control-group">
+            <label>Dot Size:</label>
+            <input type="number" id="dotSize" value="10" min="4" max="20">
+        </div>
+        <div class="control-group">
+            <label>Dot Right:</label>
+            <input type="number" id="dotRight" value="-3" min="-20" max="20">
+        </div>
+        <div class="control-group">
+            <label>Dot Top:</label>
+            <input type="number" id="dotTop" value="-3" min="-20" max="20">
+        </div>
+        <div class="control-group">
+            <label>Ring Size:</label>
+            <input type="number" id="ringSize" value="2" min="0" max="5">
+        </div>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <div class="container">
+        <div class="logo-container">
+            <img src="client/public/assets/favicon-base.svg" class="logo" alt="Logo">
+            <div class="dot"></div>
+        </div>
+        <div class="text">CICERO</div>
+    </div>
+    <div class="output">
+        <div>Current CSS Values:</div>
+        <pre id="cssOutput"></pre>
+    </div>
+
+    <script>
+        const logoSize = document.getElementById('logoSize');
+        const dotSize = document.getElementById('dotSize');
+        const dotRight = document.getElementById('dotRight');
+        const dotTop = document.getElementById('dotTop');
+        const ringSize = document.getElementById('ringSize');
+        const logoContainer = document.querySelector('.logo-container');
+        const dot = document.querySelector('.dot');
+        const cssOutput = document.getElementById('cssOutput');
+
+        function updateStyles() {
+            logoContainer.style.width = `${logoSize.value}px`;
+            logoContainer.style.height = `${logoSize.value}px`;
+            dot.style.width = `${dotSize.value}px`;
+            dot.style.height = `${dotSize.value}px`;
+            dot.style.right = `${dotRight.value}px`;
+            dot.style.top = `${dotTop.value}px`;
+            dot.style.boxShadow = `0 0 0 ${ringSize.value}px ${document.body.style.backgroundColor || '#1a1a1a'}`;
+            
+            // Update CSS output
+            cssOutput.textContent = `width: ${logoSize.value}px;
+height: ${logoSize.value}px;
+dot-width: ${dotSize.value}px;
+dot-height: ${dotSize.value}px;
+dot-right: ${dotRight.value}px;
+dot-top: ${dotTop.value}px;
+ring-size: ${ringSize.value}px;`;
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.style.backgroundColor === 'white';
+            document.body.style.backgroundColor = isDark ? '#1a1a1a' : 'white';
+            dot.style.boxShadow = `0 0 0 ${ringSize.value}px ${isDark ? '#1a1a1a' : 'white'}`;
+        }
+
+        [logoSize, dotSize, dotRight, dotTop, ringSize].forEach(input => {
+            input.addEventListener('input', updateStyles);
+        });
+
+        // Initial update
+        updateStyles();
+    </script>
+</body>
+</html>

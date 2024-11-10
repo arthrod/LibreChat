@@ -257,7 +257,7 @@ const PromptForm = () => {
               {editorMode === PromptsEditorMode.ADVANCED && (
                 <Button
                   size={'sm'}
-                  className="h-10 border border-transparent bg-green-500 transition-all hover:bg-green-600 dark:bg-green-500 dark:hover:bg-green-600"
+                  className="h-10 border border-transparent bg-[#FF4040] transition-all hover:bg-[#B80000] dark:bg-[#FF4040] dark:hover:bg-[#B80000]"
                   variant={'default'}
                   onClick={() => {
                     const { _id: promptVersionId = '', prompt } = selectedPrompt ?? ({} as TPrompt);

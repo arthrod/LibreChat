@@ -6,7 +6,7 @@ export default function Toast() {
   const { toast, onOpenChange } = useToast();
   const severityClassName = {
     [NotificationSeverity.INFO]: 'border-gray-500 bg-gray-500',
-    [NotificationSeverity.SUCCESS]: 'border-green-500 bg-green-500',
+    [NotificationSeverity.SUCCESS]: 'border-[#FF4040] bg-[#FF4040]',
     [NotificationSeverity.WARNING]: 'border-orange-500 bg-orange-500',
     [NotificationSeverity.ERROR]: 'border-red-500 bg-red-500',
   };

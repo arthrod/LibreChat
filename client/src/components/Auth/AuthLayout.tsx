@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLocalize } from '~/hooks';
 import { BlinkAnimation } from './BlinkAnimation';
 import { TStartupConfig } from 'librechat-data-provider';
@@ -43,9 +44,9 @@ function AuthLayout({
       return (
         <ErrorRender>
           {localize('com_auth_error_invalid_reset_token')}{' '}
-          <a className="font-semibold text-green-600 hover:underline" href="/forgot-password">
+          <Link to="/forgot-password" className="font-semibold text-[#FF4040] hover:underline">
             {localize('com_auth_click_here')}
-          </a>{' '}
+          </Link>{' '}
           {localize('com_auth_to_try_again')}
         </ErrorRender>
       );
@@ -59,8 +60,14 @@ function AuthLayout({
     <div className="relative flex min-h-screen flex-col bg-white dark:bg-gray-900">
       <Banner />
       <BlinkAnimation active={isFetching}>
-        <div className="mt-6 h-10 w-full bg-cover">
-          <img src="/assets/logo.svg" className="h-full w-full object-contain" alt="Logo" />
+        <div className="mt-6 flex flex-col items-center justify-center">
+          <div className="relative h-[40px] w-[40px]">
+            <img src="/assets/favicon-base.svg" className="h-full w-full object-contain" alt="Logo" />
+            <div className="absolute -right-[4px] -top-[4px] h-[12px] w-[12px] rounded-full bg-[#FF4040] ring-[3px] ring-white dark:ring-gray-900" style={{ zIndex: 10 }}></div>
+          </div>
+          <div className="mt-2 text-4xl font-bold bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+            CICERO
+          </div>
         </div>
       </BlinkAnimation>
       <DisplayError />

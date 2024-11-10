@@ -200,7 +200,7 @@ export default function VariableForm({
         <div className="flex justify-end">
           <button
             type="submit"
-            className="btn rounded bg-green-500 px-4 py-2 font-bold text-white transition-all hover:bg-green-600"
+            className="btn rounded bg-[#FF4040] px-4 py-2 font-bold text-white transition-all hover:bg-[#B80000]"
           >
             {localize('com_ui_submit')}
           </button>

@@ -10,7 +10,7 @@ import { useLocalize } from '~/hooks';
 const BodyTextWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div
-      className="relative mt-4 rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700 dark:bg-green-900 dark:text-white"
+      className="relative mt-4 rounded border border-[#FF4040] bg-[#FF4040]/10 px-4 py-3 text-[#FF4040] dark:bg-[#1a1a1a] dark:text-white"
       role="alert"
     >
       {children}
@@ -24,7 +24,7 @@ const ResetPasswordBodyText = () => {
     <div className="flex flex-col">
       {localize('com_auth_reset_password_if_email_exists')}
       <span>
-        <a className="text-sm text-green-500 hover:underline" href="/login">
+        <a className="text-sm text-[#FF4040] hover:underline" href="/login">
           {localize('com_auth_back_to_login')}
         </a>
       </span>
@@ -52,7 +52,7 @@ function RequestPasswordReset() {
           setBodyText(
             <span>
               {localize('com_auth_click')}{' '}
-              <a className="text-green-500 hover:underline" href={data.link}>
+              <a className="text-[#FF4040] hover:underline" href={data.link}>
                 {localize('com_auth_here')}
               </a>{' '}
               {localize('com_auth_to_reset_your_password')}
@@ -106,7 +106,7 @@ function RequestPasswordReset() {
             aria-invalid={!!errors.email}
             className="
               webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light
-              bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none
+              bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-[#FF4040] focus:outline-none
             "
             placeholder=" "
           />
@@ -115,7 +115,7 @@ function RequestPasswordReset() {
             className="
             absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200
             peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100
-            peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-500
+            peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#FF4040]
             rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4
             "
           >
@@ -137,7 +137,7 @@ function RequestPasswordReset() {
           {localize('com_auth_continue')}
         </button>
         <div className="mt-4 flex justify-center">
-          <a href="/login" className="text-sm text-green-500">
+          <a href="/login" className="text-sm text-[#FF4040]">
             {localize('com_auth_back_to_login')}
           </a>
         </div>

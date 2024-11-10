@@ -401,7 +401,7 @@ export default function AgentConfig({
           )}
           {/* Submit Button */}
           <button
-            className="btn btn-primary focus:shadow-outline flex w-full items-center justify-center px-4 py-2 font-semibold text-white hover:bg-green-600 focus:border-green-500"
+            className="btn btn-primary focus:shadow-outline flex w-full items-center justify-center px-4 py-2 font-semibold text-white hover:bg-[#B80000] focus:border-[#FF4040]"
             type="submit"
             disabled={create.isLoading || update.isLoading}
             aria-busy={create.isLoading || update.isLoading}

@@ -54,12 +54,13 @@ const AuthContextProvider = ({
       //@ts-ignore - ok for token to be undefined initially
       setTokenHeader(token);
       setIsAuthenticated(isAuthenticated);
-      if (redirect && location.pathname !== '/') {
+      if (redirect) {
         navigate(redirect, { replace: true });
       }
     },
-    [navigate, setUser, location],
+    [navigate, setUser],
   );
+
   const doSetError = useTimeout({ callback: (error) => setError(error as string | undefined) });
 
   const loginUser = useLoginUserMutation();
@@ -97,7 +98,6 @@ const AuthContextProvider = ({
       onError: (error: TResError | unknown) => {
         const resError = error as TResError;
         doSetError(resError.message);
-        navigate('/login', { replace: true });
       },
     });
   };
@@ -107,8 +107,9 @@ const AuthContextProvider = ({
       console.log('Test mode. Skipping silent refresh.');
       return;
     }
-    // Skip refresh and redirect if on landing page
-    if (location.pathname === '/') {
+    // Skip refresh if on public paths
+    const publicPaths = ['/', '/login', '/register'];
+    if (publicPaths.includes(location.pathname)) {
       return;
     }
     refreshToken.mutate(undefined, {
@@ -139,7 +140,8 @@ const AuthContextProvider = ({
       setUser(userQuery.data);
     } else if (userQuery.isError) {
       doSetError((userQuery.error as Error).message);
-      if (location.pathname !== '/') {
+      const publicPaths = ['/', '/login', '/register'];
+      if (!publicPaths.includes(location.pathname)) {
         navigate('/login', { replace: true });
       }
     }
@@ -179,7 +181,6 @@ const AuthContextProvider = ({
     };
   }, [setUserContext, user]);
 
-  // Make the provider update only when it should
   const memoedValue = useMemo(
     () => ({
       user,
@@ -194,7 +195,6 @@ const AuthContextProvider = ({
       },
       isAuthenticated,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [user, error, isAuthenticated, token, userRole, adminRole],
   );
 

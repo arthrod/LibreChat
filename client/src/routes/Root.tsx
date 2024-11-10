@@ -12,8 +12,17 @@ import { Banner } from '~/components/Banners';
 
 export default function Root() {
   const { isAuthenticated, logout } = useAuthContext();
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Allow access to public paths when not authenticated
+    const publicPaths = ['/', '/login', '/register', '/forgot-password', '/reset-password'];
+    if (!isAuthenticated && !publicPaths.includes(location.pathname)) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, location.pathname, navigate]);
+
   const [navVisible, setNavVisible] = useState(() => {
     const savedNavVisible = localStorage.getItem('navVisible');
     return savedNavVisible !== null ? JSON.parse(savedNavVisible) : true;
@@ -47,8 +56,14 @@ export default function Root() {
     navigate('/login');
   };
 
-  // Allow landing page to be shown even when not authenticated
-  if (!isAuthenticated && location.pathname !== '/') {
+  // Don't show nav and other UI elements on public paths
+  const publicPaths = ['/', '/login', '/register', '/forgot-password', '/reset-password'];
+  if (publicPaths.includes(location.pathname)) {
+    return <Outlet />;
+  }
+
+  // Require authentication for non-public paths
+  if (!isAuthenticated) {
     return null;
   }
 

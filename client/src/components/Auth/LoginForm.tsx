@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useGetStartupConfig } from 'librechat-data-provider/react-query';
 import type { TLoginUser, TStartupConfig } from 'librechat-data-provider';
 import type { TAuthContext } from '~/common';
 import { useResendVerificationEmail } from '~/data-provider';
 import { useLocalize } from '~/hooks';
+import { Button } from '~/components/ui';
 
 type TLoginFormProps = {
   onSubmit: (data: TLoginUser) => void;
@@ -62,12 +64,13 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
 
   return (
     <>
+      <div className="login-logo" />
       {showResendLink && (
-        <div className="mt-2 rounded-md border border-green-500 bg-green-500/10 px-3 py-2 text-sm text-gray-600 dark:text-gray-200">
+        <div className="mt-2 rounded-md border border-[#FF4040] bg-[#FF4040]/10 px-3 py-2 text-sm text-gray-600 dark:text-gray-200">
           {localize('com_auth_email_verification_resend_prompt')}
           <button
             type="button"
-            className="ml-2 text-blue-600 hover:underline"
+            className="ml-2 text-[#FF4040] hover:underline"
             onClick={handleResendEmail}
             disabled={resendLinkMutation.isLoading}
           >
@@ -99,7 +102,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
               aria-invalid={!!errors.email}
               className="
                 webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light
-                bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none
+                bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-[#FF4040] focus:outline-none
               "
               placeholder=" "
             />
@@ -108,7 +111,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
               className="
                 absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200
                 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100
-                peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500
+                peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#FF4040] dark:peer-focus:text-[#FF4040]
                 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4
                 "
             >
@@ -134,7 +137,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
               aria-invalid={!!errors.password}
               className="
                 webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light
-                bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none
+                bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-[#FF4040] focus:outline-none
                 "
               placeholder=" "
             />
@@ -143,7 +146,7 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
               className="
                 absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200
                 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100
-                peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500
+                peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-[#FF4040] dark:peer-focus:text-[#FF4040]
                 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4
                 "
             >
@@ -153,19 +156,20 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
           {renderError('password')}
         </div>
         {startupConfig.passwordResetEnabled && (
-          <a href="/forgot-password" className="text-sm text-green-500">
+          <Link to="/forgot-password" className="text-sm text-[#FF4040]">
             {localize('com_auth_password_forgot')}
-          </a>
+          </Link>
         )}
         <div className="mt-6">
-          <button
+          <Button
+            type="submit"
+            variant="submit"
+            className="w-full rounded-2xl bg-[#FF4040] text-white hover:bg-[#B80000]"
             aria-label="Sign in"
             data-testid="login-button"
-            type="submit"
-            className="btn-primary w-full transform rounded-2xl px-4 py-3 tracking-wide transition-colors duration-200"
           >
             {localize('com_auth_continue')}
-          </button>
+          </Button>
         </div>
       </form>
     </>

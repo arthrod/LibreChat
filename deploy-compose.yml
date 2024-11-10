@@ -5,7 +5,7 @@ services:
     #   context: .
     #   dockerfile: Dockerfile.multi
     #   target: api-build
-    image: ghcr.io/danny-avila/librechat-dev-api:latest
+    image: arthrod82/librechat-dev:latest
     container_name: Cicero-API
     ports:
       - 3080:3080

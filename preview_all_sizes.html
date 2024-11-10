@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cicero Icons Preview</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      .theme-container {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .dark {
+        background: #1a1a1a;
+        color: white;
+      }
+      .light {
+        background: #ffffff;
+        color: black;
+        border: 1px solid #ddd;
+      }
+      .icon-container {
+        text-align: center;
+      }
+      .icon-preview {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-preview img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .maskable-preview {
+        position: relative;
+        width: 512px;
+        height: 512px;
+        border: 2px solid #666;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .safe-zone {
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+        border: 2px dashed #666;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      h2, h3 {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+      }
+      .pwa-simulation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .pwa-simulation p {
+        margin: 0;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="theme-container light">
+      <h2>Light Theme</h2>
+      <div class="icon-container">
+        <h3>16x16 Favicon</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/favicon-base.svg" width="16" height="16" />
+        </div>
+      </div>
+      <div class="icon-container">
+        <h3>32x32 Favicon</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/favicon-base.svg" width="32" height="32" />
+        </div>
+      </div>
+      <div class="icon-container">
+        <h3>180x180 Apple Touch</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/logo.svg" width="180" height="180" />
+        </div>
+      </div>
+      <div class="icon-container pwa-simulation">
+        <h3>512x512 Maskable (PWA)</h3>
+        <div class="maskable-preview">
+          <img src="client/public/assets/maskable-base.svg" width="512" height="512" />
+          <div class="safe-zone"></div>
+        </div>
+        <p>Dashed line shows PWA safe zone (content must fit within)</p>
+      </div>
+    </div>
+
+    <div class="theme-container dark">
+      <h2>Dark Theme</h2>
+      <div class="icon-container">
+        <h3>16x16 Favicon</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/favicon-base.svg" width="16" height="16" />
+        </div>
+      </div>
+      <div class="icon-container">
+        <h3>32x32 Favicon</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/favicon-base.svg" width="32" height="32" />
+        </div>
+      </div>
+      <div class="icon-container">
+        <h3>180x180 Apple Touch</h3>
+        <div class="icon-preview">
+          <img src="client/public/assets/logo.svg" width="180" height="180" />
+        </div>
+      </div>
+      <div class="icon-container pwa-simulation">
+        <h3>512x512 Maskable (PWA)</h3>
+        <div class="maskable-preview">
+          <img src="client/public/assets/maskable-base.svg" width="512" height="512" />
+          <div class="safe-zone"></div>
+        </div>
+        <p>Dashed line shows PWA safe zone (content must fit within)</p>
+      </div>
+    </div>
+  </body>
+</html>
