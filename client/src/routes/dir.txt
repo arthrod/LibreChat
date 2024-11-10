@@ -1,0 +1,20 @@
+routes/
+├── useAuthRedirect.ts
+├── dir.txt
+├── index.tsx
+├── dir.py
+├── Dashboard.tsx
+├── Search.tsx
+├── LandingPage.tsx
+├── Root.tsx
+├── ShareRoute.tsx
+├── ChatRoute.tsx
+├── Landing/
+│   ├── index.tsx
+│   ├── LandingPage.tsx
+│   ├── translations.ts
+├── Layouts/
+│   ├── Login.tsx
+│   ├── Dashboard.tsx
+│   ├── Startup.tsx
+│   ├── DashBreadcrumb.tsx

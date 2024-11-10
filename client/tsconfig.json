@@ -17,7 +17,7 @@
     "noEmit": false,
     "declaration": true,
     "declarationDir": "./types",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": "..",
     "paths": {
       "~/*": ["./client/src/*"],
@@ -28,7 +28,15 @@
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
   "exclude": ["node_modules", "vite.config.ts"],
-  "include": ["src/**/*", "test/**/*", "../e2e/**/*", "setupTests.js", "env.d.ts"],
+  "include": [
+    "src/**/*",
+    "test/**/*.ts",
+    "test/**/*.tsx",
+    "../e2e/**/*.ts",
+    "../e2e/**/*.tsx",
+    "env.d.ts",
+    "client/src/**/*"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

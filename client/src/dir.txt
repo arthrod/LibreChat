@@ -1,0 +1,976 @@
+src/
+├── dir.txt
+├── dir.py
+├── vite-env.d.ts
+├── main.jsx
+├── style.css
+├── App.jsx
+├── mobile.css
+├── Providers/
+│   ├── SearchContext.tsx
+│   ├── AgentsContext.tsx
+│   ├── CustomFormContext.tsx
+│   ├── ChatFormContext.tsx
+│   ├── ShareContext.tsx
+│   ├── AssistantsContext.tsx
+│   ├── FileMapContext.tsx
+│   ├── AddedChatContext.tsx
+│   ├── ToastContext.tsx
+│   ├── AnnouncerContext.tsx
+│   ├── AssistantsMapContext.tsx
+│   ├── ChatContext.tsx
+│   ├── DashboardContext.tsx
+│   ├── index.ts
+│   ├── BookmarkContext.tsx
+│   ├── AgentsMapContext.tsx
+├── utils/
+│   ├── endpoints.ts
+│   ├── json.ts
+│   ├── languages.ts
+│   ├── latex.ts
+│   ├── convos.fakeData.ts
+│   ├── getLocalStorageItems.ts
+│   ├── cleanupPreset.ts
+│   ├── artifacts.ts
+│   ├── cn.ts
+│   ├── messages.ts
+│   ├── conversationTags.spec.ts
+│   ├── collection.ts
+│   ├── artifacts.spec.ts
+│   ├── resetConvo.ts
+│   ├── convos.spec.ts
+│   ├── map.ts
+│   ├── buildDefaultConvo.ts
+│   ├── prompts.ts
+│   ├── getLoginError.ts
+│   ├── logger.ts
+│   ├── latex.spec.ts
+│   ├── presets.ts
+│   ├── getDefaultEndpoint.ts
+│   ├── mermaid.ts
+│   ├── sharedLink.fakeData.ts
+│   ├── validateIframe.ts
+│   ├── index.ts
+│   ├── promptGroups.ts
+│   ├── theme.ts
+│   ├── convos.ts
+│   ├── forms.tsx
+│   ├── endpoints.spec.ts
+│   ├── conversationTags.ts
+│   ├── textarea.ts
+│   ├── files.ts
+│   ├── sharedLink.spec.ts
+│   ├── sharedLink.ts
+│   ├── buildTree.ts
+├── components/
+│   ├── Features.tsx
+│   ├── BurgerMenu.tsx
+│   ├── index.ts
+│   ├── Canvas.tsx
+│   ├── svg/
+│   │   ├── PaLMinimalIcon.tsx
+│   │   ├── PaLMIcon.tsx
+│   │   ├── BirthdayIcon.tsx
+│   │   ├── GearIcon.tsx
+│   │   ├── BingAIMinimalIcon.tsx
+│   │   ├── EditIcon.tsx
+│   │   ├── Clipboard.tsx
+│   │   ├── PinIcon.tsx
+│   │   ├── GoogleIconChat.tsx
+│   │   ├── SaveIcon.tsx
+│   │   ├── Blocks.tsx
+│   │   ├── BingJbIcon.tsx
+│   │   ├── VolumeMuteIcon.tsx
+│   │   ├── ConvoIcon.tsx
+│   │   ├── CircleHelpIcon.tsx
+│   │   ├── ChatIcon.tsx
+│   │   ├── AttachmentIcon.tsx
+│   │   ├── DarkModeIcon.tsx
+│   │   ├── CheckMark.tsx
+│   │   ├── CautionIcon.tsx
+│   │   ├── CodeyIcon.tsx
+│   │   ├── CrossIcon.tsx
+│   │   ├── RenameIcon.tsx
+│   │   ├── SunIcon.tsx
+│   │   ├── LightningIcon.tsx
+│   │   ├── OpenAIMinimalIcon.tsx
+│   │   ├── SpeechIcon.tsx
+│   │   ├── RegenerateIcon.tsx
+│   │   ├── Sparkles.tsx
+│   │   ├── AnthropicIcon.tsx
+│   │   ├── OpenIDIcon.tsx
+│   │   ├── SendMessageIcon.tsx
+│   │   ├── GeminiIcon.tsx
+│   │   ├── GPTIcon.tsx
+│   │   ├── Plugin.tsx
+│   │   ├── AnthropicMinimalIcon.tsx
+│   │   ├── SwitchIcon.tsx
+│   │   ├── AzureMinimalIcon.tsx
+│   │   ├── AssistantIcon.tsx
+│   │   ├── Panel.tsx
+│   │   ├── MessagesSquared.tsx
+│   │   ├── DotsIcon.tsx
+│   │   ├── ListeningIcon.tsx
+│   │   ├── LinkIcon.tsx
+│   │   ├── TrashIcon.tsx
+│   │   ├── NewChatIcon.tsx
+│   │   ├── BingIcon.tsx
+│   │   ├── FacebookIcon.tsx
+│   │   ├── UserIcon.tsx
+│   │   ├── BingChatIcon.tsx
+│   │   ├── ArchiveIcon.tsx
+│   │   ├── index.ts
+│   │   ├── DislikeIcon.tsx
+│   │   ├── LogOutIcon.tsx
+│   │   ├── CustomMinimalIcon.tsx
+│   │   ├── DiscordIcon.tsx
+│   │   ├── LightModeIcon.tsx
+│   │   ├── ContinueIcon.tsx
+│   │   ├── DataIcon.tsx
+│   │   ├── GoogleIcon.tsx
+│   │   ├── MinimalPlugin.tsx
+│   │   ├── BingIconBackup.tsx
+│   │   ├── SendIcon.tsx
+│   │   ├── GoogleMinimalIcon.tsx
+│   │   ├── Spinner.tsx
+│   │   ├── BedrockIcon.tsx
+│   │   ├── ChatGPTMinimalIcon.tsx
+│   │   ├── StopGeneratingIcon.tsx
+│   │   ├── OGBingIcon.tsx
+│   │   ├── VolumeIcon.tsx
+│   │   ├── GithubIcon.tsx
+│   │   ├── LockIcon.tsx
+│   │   ├── ExperimentIcon.tsx
+│   │   ├── LikeIcon.tsx
+│   │   ├── Files/
+│   │   │   ├── CodePaths.tsx
+│   │   │   ├── FilePaths.tsx
+│   │   │   ├── TextPaths.tsx
+│   │   │   ├── FileIcon.tsx
+│   │   │   ├── SheetPaths.tsx
+│   ├── ui/
+│   │   ├── Prompt.tsx
+│   │   ├── OriginalDialog.tsx
+│   │   ├── DialogTemplate.tsx
+│   │   ├── DropdownPopup.tsx
+│   │   ├── DataTableColumnHeader.tsx
+│   │   ├── Pagination.tsx
+│   │   ├── AlertDialog.tsx
+│   │   ├── DropdownNoState.tsx
+│   │   ├── Tabs.tsx
+│   │   ├── Slider.tsx
+│   │   ├── DialogTemplate.spec.tsx
+│   │   ├── SelectDropDownPop.tsx
+│   │   ├── ThemeSelector.tsx
+│   │   ├── SelectDropDown.tsx
+│   │   ├── MultiSearch.tsx
+│   │   ├── Resizable.tsx
+│   │   ├── Label.tsx
+│   │   ├── Accordion.tsx
+│   │   ├── Tooltip.tsx
+│   │   ├── Combobox.tsx
+│   │   ├── Tag.tsx
+│   │   ├── HoverCard.tsx
+│   │   ├── Switch.tsx
+│   │   ├── FileUpload.tsx
+│   │   ├── Breadcrumb.tsx
+│   │   ├── ControlCombobox.tsx
+│   │   ├── TermsAndConditionsModal.tsx
+│   │   ├── Dropdown.tsx
+│   │   ├── InputWithDropDown.tsx
+│   │   ├── DelayedRender.tsx
+│   │   ├── Dialog.tsx
+│   │   ├── OGDialogTemplate.tsx
+│   │   ├── InputCombobox.tsx
+│   │   ├── DropdownMenu.tsx
+│   │   ├── Table.tsx
+│   │   ├── index.ts
+│   │   ├── MultiSelectDropDown.tsx
+│   │   ├── Separator.tsx
+│   │   ├── ModelParameters.tsx
+│   │   ├── Button.tsx
+│   │   ├── TextareaAutosize.tsx
+│   │   ├── Toast.tsx
+│   │   ├── Checkbox.tsx
+│   │   ├── Collapsible.tsx
+│   │   ├── Select.tsx
+│   │   ├── Textarea.tsx
+│   │   ├── Input.tsx
+│   │   ├── QuestionMark.tsx
+│   │   ├── InputNumber.tsx
+│   │   ├── Skeleton.tsx
+│   │   ├── MultiSelectPop.tsx
+│   ├── Artifacts/
+│   │   ├── ArtifactButton.tsx
+│   │   ├── useDebounceCodeBlock.ts
+│   │   ├── Code.tsx
+│   │   ├── ArtifactPreview.tsx
+│   │   ├── Mermaid.tsx
+│   │   ├── Artifact.tsx
+│   │   ├── Artifacts.tsx
+│   ├── Tools/
+│   │   ├── ToolSelectDialog.tsx
+│   │   ├── ToolItem.tsx
+│   │   ├── index.ts
+│   ├── Messages/
+│   │   ├── ContentRender.tsx
+│   │   ├── MessageContent.tsx
+│   │   ├── ScrollToBottom.tsx
+│   │   ├── Content/
+│   │   │   ├── Container.tsx
+│   │   │   ├── Plugin.tsx
+│   │   │   ├── Error.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── SubRow.tsx
+│   │   │   ├── CodeBlock.tsx
+│   ├── Endpoints/
+│   │   ├── MessageEndpointIcon.tsx
+│   │   ├── EndpointSettings.tsx
+│   │   ├── AlternativeSettings.tsx
+│   │   ├── ConvoIcon.tsx
+│   │   ├── SaveAsPresetDialog.tsx
+│   │   ├── Icon.tsx
+│   │   ├── EndpointIcon.tsx
+│   │   ├── ConvoIconURL.tsx
+│   │   ├── index.ts
+│   │   ├── MinimalIcon.tsx
+│   │   ├── Settings/
+│   │   │   ├── OpenAI.tsx
+│   │   │   ├── Assistants.tsx
+│   │   │   ├── Bedrock.tsx
+│   │   │   ├── Plugins.tsx
+│   │   │   ├── settings.ts
+│   │   │   ├── Examples.tsx
+│   │   │   ├── AgentSettings.tsx
+│   │   │   ├── OptionHover.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── BingAI.tsx
+│   │   │   ├── Anthropic.tsx
+│   │   │   ├── Advanced.tsx
+│   │   │   ├── Google.tsx
+│   │   │   ├── MultiView/
+│   │   │   │   ├── PluginSettings.tsx
+│   │   │   │   ├── GoogleSettings.tsx
+│   │   │   │   ├── index.ts
+│   ├── Chat/
+│   │   ├── ConvoStarter.tsx
+│   │   ├── AddMultiConvo.tsx
+│   │   ├── Prompts.tsx
+│   │   ├── Presentation.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ChatView.tsx
+│   │   ├── PromptCard.tsx
+│   │   ├── Header.tsx
+│   │   ├── Landing.tsx
+│   │   ├── ExportAndShareMenu.tsx
+│   │   ├── Messages/
+│   │   │   ├── MessagesView.tsx
+│   │   │   ├── SiblingSwitch.tsx
+│   │   │   ├── SearchButtons.tsx
+│   │   │   ├── HoverButtons.tsx
+│   │   │   ├── MinimalMessages.tsx
+│   │   │   ├── MessageParts.tsx
+│   │   │   ├── MessageAudio.tsx
+│   │   │   ├── SearchMessage.tsx
+│   │   │   ├── MultiMessage.tsx
+│   │   │   ├── Message.tsx
+│   │   │   ├── SubRow.tsx
+│   │   │   ├── MinimalHoverButtons.tsx
+│   │   │   ├── MessageIcon.tsx
+│   │   │   ├── ui/
+│   │   │   │   ├── MessageRender.tsx
+│   │   │   │   ├── PlaceholderRow.tsx
+│   │   │   ├── Content/
+│   │   │   │   ├── ProgressCircle.tsx
+│   │   │   │   ├── Markdown.tsx
+│   │   │   │   ├── Container.tsx
+│   │   │   │   ├── RetrievalIcon.tsx
+│   │   │   │   ├── ProgressText.tsx
+│   │   │   │   ├── WrenchIcon.tsx
+│   │   │   │   ├── CodeAnalyze.tsx
+│   │   │   │   ├── Files.tsx
+│   │   │   │   ├── ImageGen.tsx
+│   │   │   │   ├── InProgressCall.tsx
+│   │   │   │   ├── ToolCall.tsx
+│   │   │   │   ├── CancelledIcon.tsx
+│   │   │   │   ├── MessageContent.tsx
+│   │   │   │   ├── ToolPopover.tsx
+│   │   │   │   ├── Part.tsx
+│   │   │   │   ├── DialogImage.tsx
+│   │   │   │   ├── Image.tsx
+│   │   │   │   ├── FinishedIcon.tsx
+│   │   │   │   ├── ContentParts.tsx
+│   │   │   │   ├── RetrievalCall.tsx
+│   │   │   │   ├── MarkdownLite.tsx
+│   │   │   │   ├── ActionIcon.tsx
+│   │   │   │   ├── EditMessage.tsx
+│   │   │   │   ├── SearchContent.tsx
+│   │   │   │   ├── Parts/
+│   │   │   │   │   ├── ExecuteCode.tsx
+│   │   │   │   │   ├── LogContent.tsx
+│   │   │   │   │   ├── Text.tsx
+│   │   │   │   │   ├── CodeProgress.tsx
+│   │   │   │   │   ├── EditTextPart.tsx
+│   │   │   │   │   ├── LogLink.tsx
+│   │   ├── Input/
+│   │   │   ├── HeaderOptions.tsx
+│   │   │   ├── PopoverButtons.tsx
+│   │   │   ├── PromptsCommand.tsx
+│   │   │   ├── CircleRender.tsx
+│   │   │   ├── AddedConvo.tsx
+│   │   │   ├── OptionsPopover.tsx
+│   │   │   ├── StopButton.tsx
+│   │   │   ├── SendButton.tsx
+│   │   │   ├── Mention.tsx
+│   │   │   ├── MentionItem.tsx
+│   │   │   ├── StreamAudio.tsx
+│   │   │   ├── TextareaHeader.tsx
+│   │   │   ├── ActiveSetting.tsx
+│   │   │   ├── AudioRecorder.tsx
+│   │   │   ├── ChatForm.tsx
+│   │   │   ├── Files/
+│   │   │   │   ├── ProgressCircle.tsx
+│   │   │   │   ├── AttachFile.tsx
+│   │   │   │   ├── FilePreview.tsx
+│   │   │   │   ├── FileContainer.tsx
+│   │   │   │   ├── FileFormWrapper.tsx
+│   │   │   │   ├── FileUpload.tsx
+│   │   │   │   ├── FileRow.tsx
+│   │   │   │   ├── ImagePreview.tsx
+│   │   │   │   ├── DragDropOverlay.tsx
+│   │   │   │   ├── FilesView.tsx
+│   │   │   │   ├── SourceIcon.tsx
+│   │   │   │   ├── RemoveFile.tsx
+│   │   │   │   ├── Image.tsx
+│   │   │   │   ├── Table/
+│   │   │   │   │   ├── fakeData.ts
+│   │   │   │   │   ├── Columns.tsx
+│   │   │   │   │   ├── TemplateTable.tsx
+│   │   │   │   │   ├── SortFilterHeader.tsx
+│   │   │   │   │   ├── DataTable.tsx
+│   │   │   │   │   ├── index.ts
+│   │   ├── Menus/
+│   │   │   ├── BookmarkMenu.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── EndpointsMenu.tsx
+│   │   │   ├── PresetsMenu.tsx
+│   │   │   ├── HeaderNewChat.tsx
+│   │   │   ├── UI/
+│   │   │   │   ├── MenuSeparator.tsx
+│   │   │   │   ├── MenuItem.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── TitleButton.tsx
+│   │   │   ├── Endpoints/
+│   │   │   │   ├── MenuItems.tsx
+│   │   │   │   ├── MenuItem.tsx
+│   │   │   │   ├── Icons.tsx
+│   │   │   │   ├── UnknownIcon.tsx
+│   │   │   ├── Models/
+│   │   │   │   ├── fakeData.ts
+│   │   │   │   ├── MenuButton.tsx
+│   │   │   │   ├── SpecIcon.tsx
+│   │   │   │   ├── ModelSpecsMenu.tsx
+│   │   │   │   ├── ModelSpecs.tsx
+│   │   │   │   ├── ModelSpec.tsx
+│   │   │   ├── Bookmarks/
+│   │   │   │   ├── BookmarkMenuItems.tsx
+│   │   │   ├── Presets/
+│   │   │   │   ├── PresetItems.tsx
+│   │   │   │   ├── EditPresetDialog.tsx
+│   │   │   │   ├── index.ts
+│   ├── Auth/
+│   │   ├── SocialButton.tsx
+│   │   ├── LoginForm.tsx
+│   │   ├── AuthLayout.tsx
+│   │   ├── Login.tsx
+│   │   ├── ErrorMessage.tsx
+│   │   ├── RequestPasswordReset.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ResetPassword.tsx
+│   │   ├── SocialLoginRender.tsx
+│   │   ├── ApiErrorWatcher.tsx
+│   │   ├── index.ts
+│   │   ├── Registration.tsx
+│   │   ├── BlinkAnimation.tsx
+│   │   ├── VerifyEmail.tsx
+│   │   ├── __tests__/
+│   │   │   ├── Login.spec.tsx
+│   │   │   ├── LoginForm.spec.tsx
+│   │   │   ├── Registration.spec.tsx
+│   ├── Input/
+│   │   ├── SetKeyDialog/
+│   │   │   ├── InputWithLabel.tsx
+│   │   │   ├── OpenAIConfig.tsx
+│   │   │   ├── CustomEndpoint.tsx
+│   │   │   ├── GoogleConfig.tsx
+│   │   │   ├── OtherConfig.tsx
+│   │   │   ├── HelpText.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── SetKeyDialog.tsx
+│   │   ├── ModelSelect/
+│   │   │   ├── OpenAI.tsx
+│   │   │   ├── ModelSelect.tsx
+│   │   │   ├── PluginsByIndex.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── BingAI.tsx
+│   │   │   ├── Anthropic.tsx
+│   │   │   ├── Google.tsx
+│   │   │   ├── ChatGPT.tsx
+│   │   │   ├── options.ts
+│   │   ├── Generations/
+│   │   │   ├── Continue.tsx
+│   │   │   ├── Stop.tsx
+│   │   │   ├── Regenerate.tsx
+│   │   │   ├── Button.tsx
+│   │   │   ├── __tests__/
+│   │   │   │   ├── Continue.spec.tsx
+│   │   │   │   ├── Regenerate.spec.tsx
+│   │   │   │   ├── Button.spec.tsx
+│   │   │   │   ├── Stop.spec.tsx
+│   ├── Plugins/
+│   │   ├── index.ts
+│   │   ├── Store/
+│   │   │   ├── PluginStoreLinkButton.tsx
+│   │   │   ├── PluginAuthForm.tsx
+│   │   │   ├── styles.module.css
+│   │   │   ├── PluginPagination.tsx
+│   │   │   ├── PluginStoreDialog.tsx
+│   │   │   ├── PluginTooltip.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── PluginStoreItem.tsx
+│   │   │   ├── __tests__/
+│   │   │   │   ├── PluginAuthForm.spec.tsx
+│   │   │   │   ├── PluginStoreItem.spec.tsx
+│   │   │   │   ├── PluginPagination.spec.tsx
+│   │   │   │   ├── PluginStoreDialog.spec.tsx
+│   ├── SidePanel/
+│   │   ├── Nav.tsx
+│   │   ├── AgentSwitcher.tsx
+│   │   ├── SidePanel.tsx
+│   │   ├── Switcher.tsx
+│   │   ├── AssistantSwitcher.tsx
+│   │   ├── data.tsx
+│   │   ├── index.ts
+│   │   ├── ModelSwitcher.tsx
+│   │   ├── Agents/
+│   │   │   ├── DeleteButton.tsx
+│   │   │   ├── ActionsAuth.tsx
+│   │   │   ├── ActionsPanel.tsx
+│   │   │   ├── AgentAvatar.tsx
+│   │   │   ├── AgentTool.tsx
+│   │   │   ├── ShareAgent.tsx
+│   │   │   ├── AgentPanel.tsx
+│   │   │   ├── AgentSelect.tsx
+│   │   │   ├── FileSearch.tsx
+│   │   │   ├── FileSearchCheckbox.tsx
+│   │   │   ├── Retrieval.tsx
+│   │   │   ├── ModelPanel.tsx
+│   │   │   ├── ActionsInput.tsx
+│   │   │   ├── AgentPanelSkeleton.tsx
+│   │   │   ├── ImageVision.tsx
+│   │   │   ├── AgentPanelSwitch.tsx
+│   │   │   ├── Images.tsx
+│   │   │   ├── AgentConfig.tsx
+│   │   │   ├── Code/
+│   │   │   │   ├── Action.tsx
+│   │   │   │   ├── Files.tsx
+│   │   │   │   ├── Form.tsx
+│   │   │   ├── ActionsTable/
+│   │   │   │   ├── Columns.tsx
+│   │   │   │   ├── Table.tsx
+│   │   │   │   ├── index.ts
+│   │   ├── Bookmarks/
+│   │   │   ├── BookmarkTableRow.tsx
+│   │   │   ├── BookmarkPanel.tsx
+│   │   │   ├── BookmarkTable.tsx
+│   │   ├── Parameters/
+│   │   │   ├── DynamicCheckbox.tsx
+│   │   │   ├── DynamicTextarea.tsx
+│   │   │   ├── DynamicInput.tsx
+│   │   │   ├── DynamicSlider.tsx
+│   │   │   ├── settings.ts
+│   │   │   ├── DynamicInputNumber.tsx
+│   │   │   ├── DynamicDropdown.tsx
+│   │   │   ├── DynamicCombobox.tsx
+│   │   │   ├── Panel.tsx
+│   │   │   ├── DynamicTags.tsx
+│   │   │   ├── OptionHover.tsx
+│   │   │   ├── components.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── DynamicSwitch.tsx
+│   │   ├── Files/
+│   │   │   ├── PanelColumns.tsx
+│   │   │   ├── PanelTable.tsx
+│   │   │   ├── PanelFileCell.tsx
+│   │   │   ├── Panel.tsx
+│   │   ├── Builder/
+│   │   │   ├── PanelSwitch.tsx
+│   │   │   ├── Knowledge.tsx
+│   │   │   ├── ActionsAuth.tsx
+│   │   │   ├── AssistantSelect.tsx
+│   │   │   ├── Action.tsx
+│   │   │   ├── ContextButton.tsx
+│   │   │   ├── ActionsPanel.tsx
+│   │   │   ├── CodeFiles.tsx
+│   │   │   ├── Code.tsx
+│   │   │   ├── AssistantAvatar.tsx
+│   │   │   ├── Retrieval.tsx
+│   │   │   ├── CapabilitiesForm.tsx
+│   │   │   ├── AssistantPanel.tsx
+│   │   │   ├── ActionsInput.tsx
+│   │   │   ├── AssistantTool.tsx
+│   │   │   ├── ImageVision.tsx
+│   │   │   ├── Images.tsx
+│   │   │   ├── AssistantConversationStarters.tsx
+│   │   │   ├── ActionsTable/
+│   │   │   │   ├── Columns.tsx
+│   │   │   │   ├── Table.tsx
+│   │   │   │   ├── index.ts
+│   ├── Banners/
+│   │   ├── Banner.tsx
+│   │   ├── index.ts
+│   ├── Audio/
+│   │   ├── TTS.tsx
+│   │   ├── Voices.tsx
+│   ├── Bookmarks/
+│   │   ├── BookmarkItems.tsx
+│   │   ├── EditBookmarkButton.tsx
+│   │   ├── DeleteBookmarkButton.tsx
+│   │   ├── BookmarkItem.tsx
+│   │   ├── index.ts
+│   │   ├── BookmarkForm.tsx
+│   │   ├── BookmarkEditDialog.tsx
+│   ├── Conversations/
+│   │   ├── ToggleContext.ts
+│   │   ├── Convo.tsx
+│   │   ├── Conversations.tsx
+│   │   ├── HoverToggle.tsx
+│   │   ├── index.ts
+│   │   ├── Pages.tsx
+│   │   ├── Fork.tsx
+│   │   ├── ConvoOptions/
+│   │   │   ├── DeleteButton.tsx
+│   │   │   ├── SharedLinkButton.tsx
+│   │   │   ├── ConvoOptions.tsx
+│   │   │   ├── ShareButton.tsx
+│   │   │   ├── index.ts
+│   ├── Prompts/
+│   │   ├── PreviewPrompt.tsx
+│   │   ├── PromptsAccordion.tsx
+│   │   ├── Markdown.tsx
+│   │   ├── ManagePrompts.tsx
+│   │   ├── PromptVersions.tsx
+│   │   ├── PromptForm.tsx
+│   │   ├── EmptyPromptPreview.tsx
+│   │   ├── AdvancedSwitch.tsx
+│   │   ├── SharePrompt.tsx
+│   │   ├── PromptName.tsx
+│   │   ├── Description.tsx
+│   │   ├── Command.tsx
+│   │   ├── SkeletonForm.tsx
+│   │   ├── PromptDetails.tsx
+│   │   ├── DeleteVersion.tsx
+│   │   ├── AdminSettings.tsx
+│   │   ├── PromptsView.tsx
+│   │   ├── PromptVariables.tsx
+│   │   ├── index.ts
+│   │   ├── PreviewLabels.tsx
+│   │   ├── BackToChat.tsx
+│   │   ├── PromptEditor.tsx
+│   │   ├── Groups/
+│   │   │   ├── AutoSendPrompt.tsx
+│   │   │   ├── NoPromptGroup.tsx
+│   │   │   ├── PanelNavigation.tsx
+│   │   │   ├── ChatGroupItem.tsx
+│   │   │   ├── FilterPrompts.tsx
+│   │   │   ├── List.tsx
+│   │   │   ├── CategorySelector.tsx
+│   │   │   ├── VariableDialog.tsx
+│   │   │   ├── ListCard.tsx
+│   │   │   ├── CategoryIcon.tsx
+│   │   │   ├── GroupSidePanel.tsx
+│   │   │   ├── VariableForm.tsx
+│   │   │   ├── CreatePromptForm.tsx
+│   │   │   ├── DashGroupItem.tsx
+│   │   │   ├── AlwaysMakeProd.tsx
+│   ├── Files/
+│   │   ├── FilesSectionSelector.tsx
+│   │   ├── FilesListView.tsx
+│   │   ├── VectorStoreView.tsx
+│   │   ├── DeleteIconButton.tsx
+│   │   ├── ActionButton.tsx
+│   │   ├── FileDashboardView.tsx
+│   │   ├── FileList/
+│   │   │   ├── FileSidePanel.tsx
+│   │   │   ├── DataTableFilePreview.tsx
+│   │   │   ├── FilePreview.tsx
+│   │   │   ├── FileListItem.tsx
+│   │   │   ├── UploadFileButton.tsx
+│   │   │   ├── FileList.tsx
+│   │   │   ├── FileTableColumns.tsx
+│   │   │   ├── FileListItem2.tsx
+│   │   │   ├── UploadFileModal.tsx
+│   │   │   ├── DataTableFile.tsx
+│   │   │   ├── EmptyFilePreview.tsx
+│   │   ├── VectorStore/
+│   │   │   ├── VectorStoreButton.tsx
+│   │   │   ├── EmptyVectorStorePreview.tsx
+│   │   │   ├── VectorStoreSidePanel.tsx
+│   │   │   ├── VectorStorePreview.tsx
+│   │   │   ├── VectorStoreFilter.tsx
+│   │   │   ├── VectorStoreList.tsx
+│   │   │   ├── VectorStoreListItem.tsx
+│   ├── Nav/
+│   │   ├── Settings.tsx
+│   │   ├── Nav.spec.tsx
+│   │   ├── Nav.tsx
+│   │   ├── NewChat.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── NavLink.tsx
+│   │   ├── MobileNav.tsx
+│   │   ├── AccountSettings.tsx
+│   │   ├── index.ts
+│   │   ├── NavToggle.tsx
+│   │   ├── SettingsTabs/
+│   │   │   ├── HoverCardSettings.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── DangerButton.tsx
+│   │   │   ├── Beta/
+│   │   │   │   ├── Beta.tsx
+│   │   │   │   ├── CodeArtifacts.tsx
+│   │   │   ├── Chat/
+│   │   │   │   ├── EnterToSend.tsx
+│   │   │   │   ├── ModularChat.tsx
+│   │   │   │   ├── ChatDirection.tsx
+│   │   │   │   ├── SaveDraft.tsx
+│   │   │   │   ├── ShowCodeSwitch.tsx
+│   │   │   │   ├── LaTeXParsing.tsx
+│   │   │   │   ├── FontSizeSelector.tsx
+│   │   │   │   ├── Chat.tsx
+│   │   │   │   ├── ForkSettings.tsx
+│   │   │   ├── General/
+│   │   │   │   ├── UserMsgMarkdownSwitch.tsx
+│   │   │   │   ├── ArchivedChats.tsx
+│   │   │   │   ├── AutoScrollSwitch.spec.tsx
+│   │   │   │   ├── HideSidePanelSwitch.tsx
+│   │   │   │   ├── AutoScrollSwitch.tsx
+│   │   │   │   ├── LangSelector.spec.tsx
+│   │   │   │   ├── ThemeSelector.spec.tsx
+│   │   │   │   ├── ArchivedChatsTable.tsx
+│   │   │   │   ├── General.tsx
+│   │   │   ├── Speech/
+│   │   │   │   ├── ConversationModeSwitch.tsx
+│   │   │   │   ├── ConversationModeSwitch.spec.tsx
+│   │   │   │   ├── Speech.tsx
+│   │   │   │   ├── TTS/
+│   │   │   │   │   ├── VoiceDropdown.tsx
+│   │   │   │   │   ├── EngineTTSDropdown.tsx
+│   │   │   │   │   ├── CacheTTSSwitch.tsx
+│   │   │   │   │   ├── CloudBrowserVoicesSwitch.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── TextToSpeechSwitch.tsx
+│   │   │   │   │   ├── AutomaticPlaybackSwitch.tsx
+│   │   │   │   │   ├── PlaybackRate.tsx
+│   │   │   │   │   ├── __tests__/
+│   │   │   │   │   │   ├── TextToSpeechSwitch.spec.tsx
+│   │   │   │   │   │   ├── CacheTTSSwitch.spec.tsx
+│   │   │   │   │   │   ├── CloudBrowserVoicesSwitch.spec.tsx
+│   │   │   │   │   │   ├── AutomaticPlaybackSwitch.spec.tsx
+│   │   │   │   ├── STT/
+│   │   │   │   │   ├── AutoTranscribeAudioSwitch.tsx
+│   │   │   │   │   ├── DecibelSelector.tsx
+│   │   │   │   │   ├── LanguageSTTDropdown.tsx
+│   │   │   │   │   ├── AutoSendTextSelector.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── EngineSTTDropdown.tsx
+│   │   │   │   │   ├── SpeechToTextSwitch.tsx
+│   │   │   │   │   ├── __tests__/
+│   │   │   │   │   │   ├── SpeechToTextSwitch.spec.tsx
+│   │   │   │   │   │   ├── AutoTranscribeAudioSwitch.spec.tsx
+│   │   │   ├── Commands/
+│   │   │   │   ├── AtCommandSwitch.tsx
+│   │   │   │   ├── SlashCommandSwitch.tsx
+│   │   │   │   ├── Commands.tsx
+│   │   │   │   ├── PlusCommandSwitch.tsx
+│   │   │   ├── Account/
+│   │   │   │   ├── Account.tsx
+│   │   │   │   ├── DeleteAccount.tsx
+│   │   │   │   ├── DisplayUsernameMessages.tsx
+│   │   │   │   ├── Avatar.tsx
+│   │   │   ├── Data/
+│   │   │   │   ├── ImportConversations.tsx
+│   │   │   │   ├── ClearChats.tsx
+│   │   │   │   ├── DeleteCache.tsx
+│   │   │   │   ├── RevokeAllKeys.tsx
+│   │   │   │   ├── SharedLinkTable.tsx
+│   │   │   │   ├── Data.tsx
+│   │   │   │   ├── RevokeKeysButton.tsx
+│   │   │   │   ├── SharedLinks.tsx
+│   │   ├── Bookmarks/
+│   │   │   ├── BookmarkNavItems.tsx
+│   │   │   ├── BookmarkNav.tsx
+│   │   ├── ExportConversation/
+│   │   │   ├── ExportModal.tsx
+│   │   │   ├── index.ts
+│   ├── Share/
+│   │   ├── MessagesView.tsx
+│   │   ├── MultiMessage.tsx
+│   │   ├── ShareView.tsx
+│   │   ├── Message.tsx
+│   │   ├── MessageIcon.tsx
+├── common/
+│   ├── agents-types.ts
+│   ├── a11y.ts
+│   ├── artifacts.ts
+│   ├── assistants-types.ts
+│   ├── types.ts
+│   ├── index.ts
+├── hooks/
+│   ├── useGenerationsByLatest.ts
+│   ├── useToast.ts
+│   ├── useOnClickOutside.ts
+│   ├── ApiErrorBoundaryContext.tsx
+│   ├── useDocumentTitle.ts
+│   ├── useLocalStorage.tsx
+│   ├── useScrollToRef.ts
+│   ├── useDelayedRender.tsx
+│   ├── useTimeout.tsx
+│   ├── ThemeContext.tsx
+│   ├── AuthContext.tsx
+│   ├── ScreenshotContext.tsx
+│   ├── useLocalize.ts
+│   ├── index.ts
+│   ├── useNewConvo.ts
+│   ├── useMediaQuery.tsx
+│   ├── Artifacts/
+│   │   ├── useAutoScroll.ts
+│   │   ├── useArtifacts.ts
+│   ├── SSE/
+│   │   ├── useSSE.ts
+│   │   ├── useEventHandlers.ts
+│   │   ├── useStepHandler.ts
+│   │   ├── useAttachmentHandler.ts
+│   │   ├── index.ts
+│   │   ├── useContentHandler.ts
+│   ├── Messages/
+│   │   ├── useBuildMessageTree.ts
+│   │   ├── useMessageActions.tsx
+│   │   ├── useAvatar.ts
+│   │   ├── useMessageScrolling.ts
+│   │   ├── useProgress.ts
+│   │   ├── useSubmitMessage.ts
+│   │   ├── useCopyToClipboard.ts
+│   │   ├── index.ts
+│   │   ├── useMessageProcess.tsx
+│   │   ├── useMessageHelpers.tsx
+│   ├── Chat/
+│   │   ├── useAddedResponse.ts
+│   │   ├── useAddedHelpers.ts
+│   │   ├── useChatHelpers.ts
+│   │   ├── index.ts
+│   │   ├── useChatFunctions.ts
+│   ├── Assistants/
+│   │   ├── useAssistantsMap.ts
+│   │   ├── useSelectAssistant.ts
+│   │   ├── useAssistantListMap.ts
+│   │   ├── index.ts
+│   ├── Config/
+│   │   ├── useConfigOverride.ts
+│   │   ├── useAppStartup.ts
+│   │   ├── index.ts
+│   ├── Input/
+│   │   ├── useHandleKeyUp.ts
+│   │   ├── useSpeechToTextExternal.ts
+│   │   ├── useAutoSave.ts
+│   │   ├── useQueryParams.ts
+│   │   ├── useSpeechToTextBrowser.ts
+│   │   ├── useTextToSpeechEdge.ts
+│   │   ├── useTextToSpeechBrowser.ts
+│   │   ├── useTextarea.ts
+│   │   ├── useCombobox.ts
+│   │   ├── useSelectMention.ts
+│   │   ├── useSpeechToText.ts
+│   │   ├── useUserKey.ts
+│   │   ├── useMentions.ts
+│   │   ├── useDebounce.ts
+│   │   ├── useRequiresKey.ts
+│   │   ├── index.ts
+│   │   ├── useTextToSpeechExternal.ts
+│   │   ├── useTextToSpeech.ts
+│   │   ├── useMultipleKeys.ts
+│   │   ├── useGetAudioSettings.ts
+│   ├── Plugins/
+│   │   ├── useAuthCodeTool.ts
+│   │   ├── usePluginInstall.ts
+│   │   ├── index.ts
+│   │   ├── usePluginDialogHelpers.ts
+│   ├── Agents/
+│   │   ├── useSelectAgent.ts
+│   │   ├── useAgentsMap.ts
+│   │   ├── index.ts
+│   ├── Roles/
+│   │   ├── useHasAccess.ts
+│   │   ├── index.ts
+│   ├── Audio/
+│   │   ├── useTTSEdge.ts
+│   │   ├── usePauseGlobalAudio.ts
+│   │   ├── useAudioRef.ts
+│   │   ├── useTTSBrowser.ts
+│   │   ├── MediaSourceAppender.ts
+│   │   ├── index.ts
+│   │   ├── useCustomAudioRef.ts
+│   │   ├── useTTSExternal.ts
+│   ├── Conversations/
+│   │   ├── useBookmarkSuccess.ts
+│   │   ├── useConversation.ts
+│   │   ├── useExportConversation.ts
+│   │   ├── useNavigateToConvo.tsx
+│   │   ├── useArchiveHandler.ts
+│   │   ├── useUpdateTagsInConvo.ts
+│   │   ├── useSetIndexOptions.ts
+│   │   ├── useGetSender.ts
+│   │   ├── useSearch.ts
+│   │   ├── usePresets.ts
+│   │   ├── useGenerateConvo.ts
+│   │   ├── useDefaultConvo.ts
+│   │   ├── index.ts
+│   │   ├── useParameterEffects.ts
+│   │   ├── useDebouncedInput.ts
+│   │   ├── usePresetIndexOptions.ts
+│   │   ├── useConversations.ts
+│   ├── Prompts/
+│   │   ├── useCategories.tsx
+│   │   ├── index.ts
+│   │   ├── usePromptGroupsNav.ts
+│   ├── Files/
+│   │   ├── useDelayedUploadToast.ts
+│   │   ├── useFileHandling.ts
+│   │   ├── useDragHelpers.ts
+│   │   ├── useUpdateFiles.ts
+│   │   ├── useDeleteFilesFromTable.tsx
+│   │   ├── useFileMap.ts
+│   │   ├── index.ts
+│   │   ├── useSetFilesToDelete.ts
+│   │   ├── useFileDeletion.ts
+│   ├── Generic/
+│   │   ├── useLazyEffect.ts
+│   │   ├── index.ts
+│   ├── Nav/
+│   │   ├── useNavScrolling.ts
+│   │   ├── index.ts
+│   │   ├── useNavHelpers.ts
+│   │   ├── useSideNavLinks.ts
+├── a11y/
+│   ├── MessageBlock.tsx
+│   ├── LiveMessage.tsx
+│   ├── LiveMessenger.tsx
+│   ├── LiveAnnouncer.tsx
+│   ├── index.ts
+│   ├── Announcer.tsx
+├── routes/
+│   ├── useAuthRedirect.ts
+│   ├── dir.txt
+│   ├── index.tsx
+│   ├── dir.py
+│   ├── Dashboard.tsx
+│   ├── Search.tsx
+│   ├── LandingPage.tsx
+│   ├── Root.tsx
+│   ├── ShareRoute.tsx
+│   ├── ChatRoute.tsx
+│   ├── Landing/
+│   │   ├── index.tsx
+│   │   ├── LandingPage.tsx
+│   │   ├── translations.ts
+│   ├── Layouts/
+│   │   ├── Login.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Startup.tsx
+│   │   ├── DashBreadcrumb.tsx
+├── localization/
+│   ├── Translation.ts
+│   ├── Translation.spec.ts
+│   ├── languages/
+│   │   ├── De.ts
+│   │   ├── Ar.ts
+│   │   ├── It.ts
+│   │   ├── Jp.ts
+│   │   ├── Es.ts
+│   │   ├── Br.ts
+│   │   ├── Tr.ts
+│   │   ├── Sv.ts
+│   │   ├── Zh.ts
+│   │   ├── Fr.ts
+│   │   ├── Nl.ts
+│   │   ├── Eng.ts
+│   │   ├── Fi.ts
+│   │   ├── ZhTraditional.ts
+│   │   ├── Ru.ts
+│   │   ├── Vi.ts
+│   │   ├── Pl.ts
+│   │   ├── Ko.ts
+│   │   ├── Id.ts
+│   │   ├── He.ts
+│   ├── prompts/
+│   │   ├── Ar.md
+│   │   ├── It.md
+│   │   ├── Es.md
+│   │   ├── Jp.md
+│   │   ├── Zh.md
+│   │   ├── Fr.md
+│   │   ├── De.md
+│   │   ├── Ru.md
+│   │   ├── ZhTraditional.md
+│   │   ├── Ko.md
+│   │   ├── instructions/
+│   │   │   ├── Br.md
+│   │   │   ├── Tr.md
+│   │   │   ├── Ar.md
+│   │   │   ├── It.md
+│   │   │   ├── Es.md
+│   │   │   ├── Jp.md
+│   │   │   ├── Sv.md
+│   │   │   ├── Zh.md
+│   │   │   ├── Nl.md
+│   │   │   ├── Fr.md
+│   │   │   ├── De.md
+│   │   │   ├── Id.md
+│   │   │   ├── He.md
+│   │   │   ├── Ru.md
+│   │   │   ├── ZhTraditional.md
+│   │   │   ├── Ko.md
+│   │   │   ├── Vi.md
+│   │   │   ├── Pl.md
+├── data-provider/
+│   ├── queries.ts
+│   ├── connection.ts
+│   ├── prompts.ts
+│   ├── mutations.ts
+│   ├── roles.ts
+│   ├── index.ts
+│   ├── tags.ts
+│   ├── Tools/
+│   │   ├── queries.ts
+│   │   ├── index.ts
+│   ├── Files/
+│   │   ├── queries.ts
+│   │   ├── mutations.ts
+│   │   ├── index.ts
+├── store/
+│   ├── conversations.ts
+│   ├── banner.ts
+│   ├── endpoints.ts
+│   ├── artifacts.ts
+│   ├── search.ts
+│   ├── toast.ts
+│   ├── settings.ts
+│   ├── text.ts
+│   ├── language.ts
+│   ├── utils.ts
+│   ├── prompts.ts
+│   ├── preset.ts
+│   ├── families.ts
+│   ├── submission.ts
+│   ├── conversation.ts
+│   ├── index.ts
+│   ├── user.ts

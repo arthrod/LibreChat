@@ -15,6 +15,7 @@ import ShareRoute from './ShareRoute';
 import ChatRoute from './ChatRoute';
 import Search from './Search';
 import Root from './Root';
+import LandingPage from './LandingPage';
 
 const AuthLayout = () => (
   <AuthContextProvider>
@@ -25,53 +26,45 @@ const AuthLayout = () => (
 
 export const router = createBrowserRouter([
   {
+    path: '/',
+    element: <LandingPage />,
+    index: true,
+  },
+  {
     path: 'share/:shareId',
     element: <ShareRoute />,
-  },
-  {
-    path: '/',
-    element: <StartupLayout />,
-    children: [
-      {
-        path: 'register',
-        element: <Registration />,
-      },
-      {
-        path: 'forgot-password',
-        element: <RequestPasswordReset />,
-      },
-      {
-        path: 'reset-password',
-        element: <ResetPassword />,
-      },
-    ],
-  },
-  {
-    path: 'verify',
-    element: <VerifyEmail />,
   },
   {
     element: <AuthLayout />,
     children: [
       {
-        path: '/',
-        element: <LoginLayout />,
+        element: <StartupLayout />,
         children: [
           {
             path: 'login',
             element: <Login />,
           },
+          {
+            path: 'register',
+            element: <Registration />,
+          },
+          {
+            path: 'forgot-password',
+            element: <RequestPasswordReset />,
+          },
+          {
+            path: 'reset-password',
+            element: <ResetPassword />,
+          },
         ],
       },
-      dashboardRoutes,
       {
-        path: '/',
+        path: 'verify',
+        element: <VerifyEmail />,
+      },
+      {
         element: <Root />,
         children: [
-          {
-            index: true,
-            element: <Navigate to="/c/new" replace={true} />,
-          },
           {
             path: 'c/:conversationId?',
             element: <ChatRoute />,

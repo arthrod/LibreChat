@@ -11,7 +11,7 @@ import Toast from './components/ui/Toast';
 import { LiveAnnouncer } from '~/a11y';
 import { router } from './routes';
 
-const App = () => {
+export default function App() {
   const { setError } = useApiErrorBoundary();
 
   const queryClient = new QueryClient({
@@ -44,10 +44,4 @@ const App = () => {
       </RecoilRoot>
     </QueryClientProvider>
   );
-};
-
-export default () => (
-  <ScreenshotProvider>
-    <App />
-  </ScreenshotProvider>
-);
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useGetStartupConfig } from 'librechat-data-provider/react-query';
 import { useUserTermsQuery } from '~/data-provider';
 
@@ -13,6 +13,7 @@ import { Banner } from '~/components/Banners';
 export default function Root() {
   const { isAuthenticated, logout } = useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
   const [navVisible, setNavVisible] = useState(() => {
     const savedNavVisible = localStorage.getItem('navVisible');
     return savedNavVisible !== null ? JSON.parse(savedNavVisible) : true;
@@ -46,7 +47,8 @@ export default function Root() {
     navigate('/login');
   };
 
-  if (!isAuthenticated) {
+  // Allow landing page to be shown even when not authenticated
+  if (!isAuthenticated && location.pathname !== '/') {
     return null;
   }
 

@@ -8,7 +8,7 @@ import {
   createContext,
 } from 'react';
 import { useRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { setTokenHeader, SystemRoles } from 'librechat-data-provider';
 import {
   useGetUserQuery,
@@ -42,6 +42,7 @@ const AuthContextProvider = ({
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const setUserContext = useCallback(
     (userContext: TUserContext) => {
@@ -53,11 +54,11 @@ const AuthContextProvider = ({
       //@ts-ignore - ok for token to be undefined initially
       setTokenHeader(token);
       setIsAuthenticated(isAuthenticated);
-      if (redirect) {
+      if (redirect && location.pathname !== '/') {
         navigate(redirect, { replace: true });
       }
     },
-    [navigate, setUser],
+    [navigate, setUser, location],
   );
   const doSetError = useTimeout({ callback: (error) => setError(error as string | undefined) });
 
@@ -106,6 +107,10 @@ const AuthContextProvider = ({
       console.log('Test mode. Skipping silent refresh.');
       return;
     }
+    // Skip refresh and redirect if on landing page
+    if (location.pathname === '/') {
+      return;
+    }
     refreshToken.mutate(undefined, {
       onSuccess: (data: TLoginResponse) => {
         const { user, token } = data;
@@ -127,14 +132,16 @@ const AuthContextProvider = ({
         navigate('/login');
       },
     });
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (userQuery.data) {
       setUser(userQuery.data);
     } else if (userQuery.isError) {
       doSetError((userQuery.error as Error).message);
-      navigate('/login', { replace: true });
+      if (location.pathname !== '/') {
+        navigate('/login', { replace: true });
+      }
     }
     if (error && isAuthenticated) {
       doSetError(undefined);
@@ -151,6 +158,7 @@ const AuthContextProvider = ({
     error,
     navigate,
     setUserContext,
+    location.pathname
   ]);
 
   useEffect(() => {

@@ -3,12 +3,12 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    # restart: always
+    restart: always
     links:
       - mongodb
       - meilisearch
-    # ports:
-    #   - 3080:3080               # Change it to 9000:3080 to use nginx
+    ports:
+      - 9000:3080               # Change it to 9000:3080 to use nginx
     extra_hosts: # if you are running APIs on docker you need access to, you will need to uncomment this line and next
     - "host.docker.internal:host-gateway"
 
@@ -40,17 +40,17 @@ services:
     container_name: chat-mongodb
     expose:
       - 27017
-    # ports:
-    #   - 27018:27017
+    ports:
+      - 27018:27017
     image: mongo
-    # restart: always
+    restart: always
     volumes:
       - ./data-node:/data/db
     command: mongod --noauth
   meilisearch:
     container_name: chat-meilisearch
     image: getmeili/meilisearch:v1.5
-    # restart: always
+    restart: always
     expose:
       - 7700
     # Uncomment this to access meilisearch from outside docker

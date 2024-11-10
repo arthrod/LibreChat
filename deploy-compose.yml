@@ -1,4 +1,4 @@
-version: "3.8"
+version: "0.1"
 services:
   api:
     # build:
@@ -6,7 +6,7 @@ services:
     #   dockerfile: Dockerfile.multi
     #   target: api-build
     image: ghcr.io/danny-avila/librechat-dev-api:latest
-    container_name: LibreChat-API
+    container_name: Cicero-API
     ports:
       - 3080:3080
     depends_on:
