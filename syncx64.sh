@@ -27,11 +27,24 @@ echo "New version: $NEW_VERSION"
 # Create temporary build context
 echo "Creating temporary build context..."
 BUILD_CONTEXT=$(mktemp -d)
-cp -r . "$BUILD_CONTEXT/"
 
-# Copy only librechat.yaml from temp_image_files
+# Copy project files to build context
+echo "Copying project files..."
+rsync -av --exclude '.git' \
+         --exclude 'node_modules' \
+         --exclude 'dist' \
+         --exclude 'build' \
+         . "$BUILD_CONTEXT/"
+
+# Copy librechat.yaml to build context root
 echo "Copying librechat.yaml..."
-cp "$TEMP_DIR/librechat.yaml" "$BUILD_CONTEXT/"
+cp "$TEMP_DIR/librechat.yaml" "$BUILD_CONTEXT/librechat.yaml"
+
+# Verify file exists in build context
+if [ ! -f "$BUILD_CONTEXT/librechat.yaml" ]; then
+    echo "Error: librechat.yaml not found in build context"
+    exit 1
+fi
 
 # Build data-provider package
 echo "Building data-provider package..."
@@ -46,15 +59,18 @@ echo "Building AMD64 image..."
 docker buildx create --name cicero-builder --driver docker-container --bootstrap || true
 docker buildx use cicero-builder
 
-# Build using the new Dockerfile.cicero
+# Build using the build context
 docker buildx build --platform linux/amd64 \
     -t "$CICERO_IMAGE_NAME:$NEW_VERSION" \
     -t "$CICERO_IMAGE_NAME:latest" \
     -f Dockerfile.cicero \
-    --push .
+    --push \
+    "$BUILD_CONTEXT"
 
 # Cleanup
+echo "Cleaning up..."
 docker buildx rm cicero-builder
+rm -rf "$BUILD_CONTEXT"
 
 echo "Build complete!"
 echo "AMD64 image: $CICERO_IMAGE_NAME:$NEW_VERSION and $CICERO_IMAGE_NAME:latest"

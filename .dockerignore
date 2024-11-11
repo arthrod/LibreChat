@@ -9,9 +9,11 @@
 # Specific patterns to ignore
 data-node
 meili_data*
-librechat*
+librechat.yml
 Dockerfile*
 docs
 
-# Ignore all hidden files
+# Ignore all hidden files except essential ones
 .*
+!.env.example
+!.env.test.example
