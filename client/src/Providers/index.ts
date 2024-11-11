@@ -15,3 +15,4 @@ export * from './AgentsContext';
 export * from './AssistantsMapContext';
 export * from './AnnouncerContext';
 export * from './AgentsMapContext';
+export { useLiveAnnouncer } from './AnnouncerContext';

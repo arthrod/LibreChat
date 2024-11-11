@@ -14,6 +14,7 @@ export enum AuthType {
 export const authTypeSchema = z.nativeEnum(AuthType);
 
 export enum EModelEndpoint {
+  cicero = 'cicero',
   azureOpenAI = 'azureOpenAI',
   openAI = 'openAI',
   bingAI = 'bingAI',
@@ -27,6 +28,38 @@ export enum EModelEndpoint {
   custom = 'custom',
   bedrock = 'bedrock',
 }
+
+export const eModelEndpointSchema = z.nativeEnum(EModelEndpoint);
+
+export enum KnownEndpoints {
+  anyscale = 'anyscale',
+  apipie = 'apipie',
+  cicero = 'cicero',
+  cohere = 'cohere',
+  fireworks = 'fireworks',
+  deepseek = 'deepseek',
+  groq = 'groq',
+  huggingface = 'huggingface',
+  mistral = 'mistral',
+  mlx = 'mlx',
+  ollama = 'ollama',
+  openrouter = 'openrouter',
+  perplexity = 'perplexity',
+  shuttleai = 'shuttleai',
+  'together.ai' = 'together.ai',
+  unify = 'unify',
+  xai = 'xai',
+}
+
+export const paramEndpoints = new Set<EModelEndpoint | string>([
+  EModelEndpoint.cicero,
+  EModelEndpoint.agents,
+  EModelEndpoint.openAI,
+  EModelEndpoint.bedrock,
+  EModelEndpoint.azureOpenAI,
+  EModelEndpoint.anthropic,
+  EModelEndpoint.custom,
+]);
 
 export const paramEndpoints = new Set<EModelEndpoint | string>([
   EModelEndpoint.agents,

@@ -1808,6 +1808,24 @@ button.scroll-convo {
   }
 }
 
+@-webkit-keyframes pulseSize {
+  0%,
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.25, 1.25, 1);
+    transform: scale3d(1.25, 1.25, 1);
+  }
+}
+    transform: scale(1.05);
+  }
+}
+  50% {
+    transform: scale(1.05);
+  }
+}
 
 .submitting .result-thinking:empty:last-child:after {
   -webkit-font-smoothing: subpixel-antialiased;
@@ -1922,6 +1940,26 @@ button.scroll-convo {
     opacity: 0.5;
     transform: scale(0.95);
   }
+}
+
+
+
+  content: '⬤\A Cicero';
+  white-space: pre;
+  text-align: center;
+  font-size: 1.2rem;  /* Much larger than 0.5rem */
+  color: var(--red-light);
+  text-shadow: 0 2px 4px rgba(255, 64, 64, 0.2);
+  filter: drop-shadow(0 2px 4px rgba(255, 64, 64, 0.3));
+  animation: smoothBlink 2s ease-in-out infinite;
+  line-height: 1.5;  /* More space between dot and text */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+
+  text-shadow: 0 2px 4px rgba(255, 64, 64, 0.4);
+  filter: drop-shadow(0 2px 8px rgba(255, 64, 64, 0.5));
 }
 @supports (selector(:has(*))) {
   .result-streaming > :is(ul, ol):last-child > li:last-child:not(:has(> :is(ul, ol, pre))):after {
@@ -2462,45 +2500,25 @@ button.scroll-convo {
   }
 }
 
-/* Add styles for the pulsating dot */
-.pulsating-dot {
-  width: 40px;
-  height: 40px;
-  background-color: var(--red-light);
-  border-radius: 50%;
-  animation: pulse 4s infinite;
-  position: absolute;
-  top: 20vh; /* Adjust vertical position to be above the login form */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 300; /* Higher z-index to ensure it's on top */
+.login-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  order: 1;
 }
 
-/* Keyframes for pulsating effect */
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 64, 64, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(255, 64, 64, 0);
-  }
+.login-logo:before {
+  content: "⬤\A Cicero";
+  white-space: pre;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2;
+  animation: pulseSize 3s ease-in-out infinite;
+  color: #000;
 }
 
-/* Adjust the login container to make space for the logo */
-.login-container {
-  margin-top: 120px; /* Increase top margin to make space for the dot */
-  position: relative;
-  padding: 20px;
-  background: var(--surface-primary);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 500; /* Lower than the dot to keep it underneath */
-}
-
-/* Ensure the text and other elements are centered */
-.login-text {
-  text-align: center;
-  margin-bottom: 5px;
-  font-size: 24px;
-  color: var(--text-primary);
+.dark .login-logo:before {
+  text-shadow: 0 2px 4px rgba(255, 64, 64, 0.4);
+  color: #fff;
 }

@@ -1,8 +1,8 @@
 // client/src/a11y/LiveAnnouncer.tsx
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
-import type { AnnounceOptions } from '~/Providers/AnnouncerContext';
-import AnnouncerContext from '~/Providers/AnnouncerContext';
-import useLocalize from '~/hooks/useLocalize';
+import type { AnnounceOptions } from '../Providers/AnnouncerContext';
+import AnnouncerContext from '../Providers/AnnouncerContext';
+import useLocalize from '../hooks/useLocalize';
 import Announcer from './Announcer';
 
 interface LiveAnnouncerProps {

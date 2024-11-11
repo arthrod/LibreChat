@@ -1,22 +1,36 @@
-// AnnouncerContext.tsx
-import React from 'react';
-import type { AnnounceOptions } from '~/common';
+import { createContext, useContext, useState, useCallback } from 'react';
 
-interface AnnouncerContextType {
-  announceAssertive: (options: AnnounceOptions) => void;
-  announcePolite: (options: AnnounceOptions) => void;
+type AnnouncerContextType = {
+  announce: (message: string) => void;
+};
+
+const AnnouncerContext = createContext<AnnouncerContextType | undefined>(undefined);
+
+export function LiveAnnouncer({ children }: { children: React.ReactNode }) {
+  const [message, setMessage] = useState('');
+
+  const announce = useCallback((newMessage: string) => {
+    setMessage(newMessage);
+  }, []);
+
+  return (
+    <AnnouncerContext.Provider value={{ announce }}>
+      {children}
+      <div role="status" aria-live="polite" className="sr-only">
+        {message}
+      </div>
+    </AnnouncerContext.Provider>
+  );
 }
 
-const defaultContext: AnnouncerContextType = {
-  announceAssertive: () => console.warn('Announcement failed, LiveAnnouncer context is missing'),
-  announcePolite: () => console.warn('Announcement failed, LiveAnnouncer context is missing'),
-};
-
-const AnnouncerContext = React.createContext<AnnouncerContextType>(defaultContext);
-
-export const useLiveAnnouncer = () => {
-  const context = React.useContext(AnnouncerContext);
+export function useLiveAnnouncer() {
+  const context = useContext(AnnouncerContext);
+  if (context === undefined) {
+    throw new Error('useLiveAnnouncer must be used within a LiveAnnouncer');
+  }
   return context;
-};
+}
 
-export default AnnouncerContext;
+// Export both names for compatibility
+export const AnnouncerProvider = LiveAnnouncer;
+export default LiveAnnouncer;
