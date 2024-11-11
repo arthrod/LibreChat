@@ -4,12 +4,12 @@ set -e
 # Initialize variables
 TEMP_DIR="/Users/arthrod/Library/CloudStorage/GoogleDrive-arthursrodrigues@gmail.com/My Drive/aCode/LibreChat/temp_image_files"
 COMPARISON_LOG="comparison.log"
-CICERO_IMAGE_NAME="arthrod82/cicero-dev"  # AMD64 specific image
+CICERO_IMAGE_NAME="arthrod82/cicero-dev"
 
 echo "Starting sync process for AMD64..."
-true > "$COMPARISON_LOG"  # Clear log file
+true > "$COMPARISON_LOG"
 
-# Get current version from existing image
+# Get current version
 echo "Getting current version..."
 current_version=$(docker images "$CICERO_IMAGE_NAME" --format "{{.Tag}}" | grep -v 'latest' | sort -V | tail -n1)
 if [ -z "$current_version" ]; then
@@ -23,6 +23,15 @@ NEW_VERSION="${version_parts[0]}.${version_parts[1]}.$MINOR_VERSION"
 
 echo "Current version: $current_version"
 echo "New version: $NEW_VERSION"
+
+# Create temporary build context
+echo "Creating temporary build context..."
+BUILD_CONTEXT=$(mktemp -d)
+cp -r . "$BUILD_CONTEXT/"
+
+# Copy only librechat.yaml from temp_image_files
+echo "Copying librechat.yaml..."
+cp "$TEMP_DIR/librechat.yaml" "$BUILD_CONTEXT/"
 
 # Build data-provider package
 echo "Building data-provider package..."

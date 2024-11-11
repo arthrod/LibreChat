@@ -4,11 +4,19 @@ services:
     ports:
       - "${PORT:-3080}:3080"
     depends_on:
-      - mongodb
-      - meilisearch
-      - rag_api
+      mongodb:
+        condition: service_healthy
+      meilisearch:
+        condition: service_healthy
+      rag_api:
+        condition: service_healthy
     image: arthrod82/cicero-dev:latest
     restart: always
+    healthcheck:
+      test: curl -f http://localhost:3080/ || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
     environment:
       - HOST=0.0.0.0
       - MONGO_URI=mongodb://mongodb:27017/cicero
@@ -29,6 +37,11 @@ services:
     image: mongo:latest
     restart: always
     command: mongod --noauth
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 3
     volumes:
       - mongo_data:/data/db
 
@@ -36,6 +49,11 @@ services:
     container_name: cicero-meilisearch-${INSTANCE_ID:-default}
     image: getmeili/meilisearch:v1.7.3
     restart: always
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:7700/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
     environment:
       - MEILI_NO_ANALYTICS=true
     volumes:
@@ -44,26 +62,8 @@ services:
   vectordb:
     container_name: cicero-vectordb-${INSTANCE_ID:-default}
     image: ankane/pgvector:latest
-    environment:
-      POSTGRES_DB: cicero_db
-      POSTGRES_USER: ${POSTGRES_USER:-cicero}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cicero_password}
-    restart: always
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-  rag_api:
-    container_name: cicero-rag-${INSTANCE_ID:-default}
-    image: ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest
-    environment:
-      - DB_HOST=vectordb
-      - RAG_PORT=${RAG_PORT:-8000}
-      - POSTGRES_DB=cicero_db
-      - POSTGRES_USER=${POSTGRES_USER:-cicero}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-cicero_password}
-    restart: always
-    depends_on:
-      - vectordb
+    healthcheck:
+      test: pg_isready
 
 volumes:
   mongo_data:
