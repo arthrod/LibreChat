@@ -1,0 +1,39 @@
+# Base for all builds
+FROM node:20-alpine AS base
+WORKDIR /app
+RUN apk --no-cache add curl
+
+# Set npm configs once
+RUN npm config set fetch-retry-maxtimeout 600000 && \
+    npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 15000
+
+# Copy package files first for better caching
+COPY package*.json ./
+COPY packages/data-provider/package*.json ./packages/data-provider/
+COPY client/package*.json ./client/
+COPY api/package*.json ./api/
+
+# Install dependencies
+RUN npm ci
+
+# Copy all source files
+COPY . .
+
+# Build data-provider first
+WORKDIR /app/packages/data-provider
+RUN npm run build
+
+# Build frontend (using the script from root package.json)
+WORKDIR /app
+RUN npm run frontend
+
+# Cleanup and prepare for production
+RUN npm prune --production && \
+    npm cache clean --force && \
+    mkdir -p /app/client/public/images /app/api/logs
+
+# Final setup
+EXPOSE 3080
+ENV HOST=0.0.0.0
+CMD ["npm", "run", "backend"]

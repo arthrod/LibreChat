@@ -31,3 +31,30 @@ export { dataService };
 export * from './sse';
 export * from './actions';
 export { default as createPayload } from './createPayload';
+export { EModelEndpoint, KnownEndpoints } from './schemas';
+/* storage and constants */
+export { LocalStorageKeys, Constants } from './storage';
+/* config exports */
+export { 
+  modularEndpoints,
+  defaultEndpoints,
+  isAgentsEndpoint,
+  alternateName,
+  defaultAssistantsVersion,
+  EndpointURLs
+} from './config';
+/* generate exports */
+export {
+  ComponentTypes,
+  OptionTypes,
+  generateDynamicSchema,
+} from './generate';
+/* generate type exports */
+export type {
+  ComponentType,
+  OptionType,
+  Option,
+  Setting as SettingDefinition,
+  Setting as DynamicSettingProps,
+  SettingsConfiguration,
+} from './generate';

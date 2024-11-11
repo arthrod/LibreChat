@@ -110,10 +110,10 @@ export default defineConfig({
     }
   },
   resolve: {
-    alias: [
-      { find: '~', replacement: path.resolve(__dirname, 'src') },
-      { find: '$fonts', replacement: path.resolve(__dirname, 'public/fonts') }
-    ]
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+      '$fonts': path.resolve(__dirname, 'public/fonts')
+    }
   }
 });
 

@@ -1,7 +1,6 @@
 import {
   Constants,
   LocalStorageKeys,
-  InfiniteCollections,
   defaultAssistantsVersion,
   ConversationListResponse,
 } from 'librechat-data-provider';
@@ -268,7 +267,7 @@ export const useCreateSharedLinkMutation = (
           vars.isPublic
             ? addSharedLink(sharedLink, _data)
             : deleteSharedLink(sharedLink, _data.shareId),
-          InfiniteCollections.SHARED_LINKS,
+          QueryKeys.sharedLinks,
           pageSize,
         );
       });
@@ -310,7 +309,7 @@ export const useUpdateSharedLinkMutation = (
           // Therefore, when isPublic is true, use addSharedLink instead of updateSharedLink.
             addSharedLink(sharedLink, _data)
             : deleteSharedLink(sharedLink, _data.shareId),
-          InfiniteCollections.SHARED_LINKS,
+          QueryKeys.sharedLinks,
           sharedLink.pages[0].pageSize as number,
         );
       });
@@ -348,7 +347,7 @@ export const useDeleteSharedLinkMutation = (
         }
         return normalizeData(
           deleteSharedLink(data, vars.shareId),
-          InfiniteCollections.SHARED_LINKS,
+          QueryKeys.sharedLinks,
           data.pages[0].pageSize as number,
         );
       });

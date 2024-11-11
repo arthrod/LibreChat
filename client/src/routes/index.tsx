@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import {
   Login,
   Registration,
@@ -6,10 +6,10 @@ import {
   ResetPassword,
   VerifyEmail,
   ApiErrorWatcher,
-} from '~/components/Auth';
-import { AuthContextProvider } from '~/hooks/AuthContext';
+} from '../components/Auth';
+import { AuthContextProvider } from '../hooks/AuthContext';
 import LoginLayout from './Layouts/Login';
-import dashboardRoutes from './Dashboard';
+//import dashboardRoutes from './Dashboard';
 import ShareRoute from './ShareRoute';
 import ChatRoute from './ChatRoute';
 import Search from './Search';

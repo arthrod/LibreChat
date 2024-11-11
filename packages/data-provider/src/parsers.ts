@@ -46,6 +46,7 @@ const endpointSchemas: Record<EModelEndpoint, EndpointSchema> = {
   [EModelEndpoint.azureAssistants]: assistantSchema,
   [EModelEndpoint.agents]: compactAgentsSchema,
   [EModelEndpoint.bedrock]: bedrockInputSchema,
+  [EModelEndpoint.cicero]: openAISchema,  // Add cicero endpoint using openAI schema
 };
 
 // const schemaCreators: Record<EModelEndpoint, (customSchema: DefaultSchemaValues) => EndpointSchema> = {
@@ -66,6 +67,7 @@ export function getEnabledEndpoints() {
     EModelEndpoint.gptPlugins,
     EModelEndpoint.anthropic,
     EModelEndpoint.bedrock,
+    EModelEndpoint.cicero,  // Add cicero to default endpoints
   ];
 
   const endpointsEnv = process.env.ENDPOINTS ?? '';
@@ -237,6 +239,7 @@ export const getResponseSender = (endpointOption: t.TEndpointOption): string => 
       EModelEndpoint.gptPlugins,
       EModelEndpoint.azureOpenAI,
       EModelEndpoint.chatGPTBrowser,
+      EModelEndpoint.cicero,  // Add cicero to the list
     ].includes(endpoint)
   ) {
     if (chatGptLabel) {
@@ -329,6 +332,7 @@ const compactEndpointSchemas: Record<string, CompactEndpointSchema> = {
   [EModelEndpoint.anthropic]: anthropicSchema,
   [EModelEndpoint.chatGPTBrowser]: compactChatGPTSchema,
   [EModelEndpoint.gptPlugins]: compactPluginsSchema,
+  [EModelEndpoint.cicero]: openAISchema,  // Add cicero to compact schemas
 };
 
 export const parseCompactConvo = ({

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { useGetStartupConfig } from 'librechat-data-provider/react-query';
+import { useGetStartupConfig } from '../../../packages/data-provider/src/react-query/react-query-service';
 import { useUserTermsQuery } from '~/data-provider';
 
 import type { ContextType } from '~/common';

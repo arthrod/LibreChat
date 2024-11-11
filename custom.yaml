@@ -1,6 +1,6 @@
 services:
   api:
-    container_name: Cicero
+    container_name: api-ucskws8osg0gokw0888ok4go-043122645167
     ports:
       - 3080:3080
     depends_on:
@@ -19,14 +19,14 @@ services:
       - logs:/app/api/logs
 
   mongodb:
-    container_name: chat-mongodb
+    container_name: mongodb-ucskws8osg0gokw0888ok4go-043122645167
     image: mongo
     restart: always
     volumes:
       - mongo_data:/data/db
 
   meilisearch:
-    container_name: chat-meilisearch
+    container_name: meilisearch-ucskws8osg0gokw0888ok4go-043122645167
     image: getmeili/meilisearch:v1.7.3
     restart: always
     environment:
@@ -35,7 +35,7 @@ services:
       - meili_data:/meili_data
 
   vectordb:
-    container_name: vectordb
+    container_name: vectordb-ucskws8osg0gokw0888ok4go-043122645167
     image: ankane/pgvector:latest
     environment:
       POSTGRES_DB: mydatabase
@@ -46,7 +46,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   rag_api:
-    container_name: rag_api
+    container_name: rag_api-ucskws8osg0gokw0888ok4go-043122645167
     image: ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest
     environment:
       - DB_HOST=vectordb

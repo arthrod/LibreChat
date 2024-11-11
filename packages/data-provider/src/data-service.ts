@@ -5,7 +5,7 @@ import * as a from './types/assistants';
 import * as m from './types/mutations';
 import * as q from './types/queries';
 import * as f from './types/files';
-import * as config from './config';
+import { defaultAssistantsVersion } from './config';
 import request from './request';
 import * as s from './schemas';
 import * as r from './roles';
@@ -293,7 +293,7 @@ export const getAvailableTools = (
     path = endpoints.assistants({
       path: 'tools',
       endpoint: endpoint,
-      version: version ?? config.defaultAssistantsVersion[endpoint],
+      version: version ?? defaultAssistantsVersion[endpoint],
     });
   } else {
     path = endpoints.agents({

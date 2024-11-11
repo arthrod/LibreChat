@@ -61,15 +61,6 @@ export const paramEndpoints = new Set<EModelEndpoint | string>([
   EModelEndpoint.custom,
 ]);
 
-export const paramEndpoints = new Set<EModelEndpoint | string>([
-  EModelEndpoint.agents,
-  EModelEndpoint.openAI,
-  EModelEndpoint.bedrock,
-  EModelEndpoint.azureOpenAI,
-  EModelEndpoint.anthropic,
-  EModelEndpoint.custom,
-]);
-
 export enum BedrockProviders {
   AI21 = 'ai21',
   Amazon = 'amazon',
@@ -384,8 +375,6 @@ export const endpointSettings = {
 };
 
 const google = endpointSettings[EModelEndpoint.google];
-
-export const eModelEndpointSchema = z.nativeEnum(EModelEndpoint);
 
 export const extendedModelEndpointSchema = z.union([eModelEndpointSchema, z.string()]);
 

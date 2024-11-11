@@ -1,4 +1,4 @@
-import { InfiniteCollections, QueryKeys } from 'librechat-data-provider';
+import { QueryKeys } from 'librechat-data-provider';
 import type { InfiniteData, QueryClient } from '@tanstack/react-query';
 import type {
   PromptGroupListResponse,
@@ -22,7 +22,7 @@ export const addPromptGroup = (
 ): PromptGroupListData => {
   return addData<PromptGroupListResponse, TPromptGroup>(
     data,
-    InfiniteCollections.PROMPT_GROUPS,
+    QueryKeys.promptGroups,
     newPromptGroup,
     (page) => page.promptGroups.findIndex((group) => group._id === newPromptGroup._id),
   );
@@ -34,7 +34,7 @@ export const updatePromptGroup = (
 ): PromptGroupListData => {
   return updateData<PromptGroupListResponse, TPromptGroup>(
     data,
-    InfiniteCollections.PROMPT_GROUPS,
+    QueryKeys.promptGroups,
     updatedPromptGroup,
     (page) => page.promptGroups.findIndex((group) => group._id === updatedPromptGroup._id),
   );
@@ -46,7 +46,7 @@ export const deletePromptGroup = (
 ): PromptGroupListData => {
   return deleteData<PromptGroupListResponse, PromptGroupListData>(
     data,
-    InfiniteCollections.PROMPT_GROUPS,
+    QueryKeys.promptGroups,
     (page) => page.promptGroups.findIndex((group) => group._id === groupId),
   );
 };
@@ -59,7 +59,7 @@ export const updateGroupFields = (
   return updateFields<PromptGroupListResponse, TPromptGroup>(
     data,
     updatedGroup,
-    InfiniteCollections.PROMPT_GROUPS,
+    QueryKeys.promptGroups,
     '_id',
     callback,
   );
@@ -75,7 +75,7 @@ export const findPromptGroup = (
 ): TPromptGroup | undefined => {
   return getRecordByProperty<PromptGroupListResponse, TPromptGroup>(
     data,
-    InfiniteCollections.PROMPT_GROUPS,
+    QueryKeys.promptGroups,
     findProperty,
   );
 };

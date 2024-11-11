@@ -1,0 +1,21 @@
+File comparison results - Sun Nov 10 02:52:30 EST 2024
+Version update: 0.0.0 -> 0.0.1
+----------------------------------------
+MODIFIED: api/server/index.js
+NEW: client/public/assets/maskable-base.svg
+MODIFIED: client/public/assets/logo.svg
+NEW: client/public/assets/favicon-base.svg
+MODIFIED: client/vite.config.ts
+MODIFIED: e2e/setup/authenticate.ts
+NEW: packages/.DS_Store
+NEW: generate_icons.js
+MODIFIED: package-lock.json
+MODIFIED: package.json
+MODIFIED: deploy-compose.yml
+NEW: docker-compose.override.yml
+MODIFIED: docker-compose.yml
+NEW: librechat.yaml
+NEW: analyze_image.sh
+NEW: build_custom_image.sh
+NEW: compare_dirs.sh
+NEW: sync_with_image.sh
