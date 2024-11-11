@@ -6,7 +6,7 @@ services:
     depends_on:
       - mongodb
       - rag_api
-    image: arthrod82/librechat-dev:latest
+    image: arthrod82/cicero-dev:latest
     restart: always
     environment:
       - HOST=0.0.0.0
