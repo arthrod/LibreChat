@@ -4,19 +4,12 @@ services:
     image: arthrod82/cicero-dev:latest
     ports:
       - "${PORT:-3080}:3080"
-    depends_on:
-      mongodb:
-        condition: service_healthy
-      meilisearch:
-        condition: service_healthy
-      rag_api:
-        condition: service_healthy
-    restart: always
     healthcheck:
       test: curl -f http://localhost:3080/ || exit 1
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
     environment:
       HOST: "0.0.0.0"
       MONGO_URI: "mongodb://mongodb:27017/cicero"
@@ -27,68 +20,70 @@ services:
       - ./.env:/app/.env:ro
       - images:/app/client/public/images
       - logs:/app/api/logs
+    restart: always
 
   mongodb:
     container_name: cicero-mongodb-${INSTANCE_ID:-default}
     image: mongo:latest
-    restart: always
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
     volumes:
       - mongo_data:/data/db
+    restart: always
 
   meilisearch:
     container_name: cicero-meilisearch-${INSTANCE_ID:-default}
     image: getmeili/meilisearch:v1.7.3
-    restart: always
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:7700/health || exit 1
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
     environment:
       MEILI_NO_ANALYTICS: "true"
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
       - meili_data:/meili_data
+    restart: always
 
   vectordb:
     container_name: cicero-vectordb-${INSTANCE_ID:-default}
     image: ankane/pgvector:latest
-    restart: always
     healthcheck:
       test: pg_isready -U ${POSTGRES_USER:-cicero_user} || exit 1
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-cicero_db}
       POSTGRES_USER: ${POSTGRES_USER:-cicero_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cicero_password}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: always
 
   rag_api:
     container_name: cicero-rag-${INSTANCE_ID:-default}
     image: ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest
-    restart: always
     healthcheck:
       test: curl -f http://localhost:${RAG_PORT:-8000}/health || exit 1
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
     environment:
       DB_HOST: vectordb
       RAG_PORT: ${RAG_PORT:-8000}
       POSTGRES_DB: ${POSTGRES_DB:-cicero_db}
       POSTGRES_USER: ${POSTGRES_USER:-cicero_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cicero_password}
-    depends_on:
-      vectordb:
-        condition: service_healthy
+    restart: always
 
 volumes:
   mongo_data:
