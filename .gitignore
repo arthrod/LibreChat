@@ -54,9 +54,11 @@ bower_components/
 .floo
 .flooignore
 
-#config file
+# Config and temp files
 librechat.yaml
 librechat.yml
+temp_image_files/
+images/
 
 # Environment
 .npmrc

@@ -10,10 +10,38 @@
 data-node
 meili_data*
 librechat.yml
-Dockerfile*
 docs
+temp_image_files/
+images/
+
+# Build artifacts
+**/dist
+**/build
+**/.next
+**/.nuxt
+
+# Logs and databases
+**/*.log
+**/*.sql
+**/*.sqlite
 
 # Ignore all hidden files except essential ones
 .*
 !.env.example
 !.env.test.example
+
+# Cache directories
+.cache
+.npm
+.yarn
+
+# Test directories
+**/coverage
+**/test
+**/__tests__
+**/e2e
+
+# Documentation
+**/*.md
+**/LICENSE
+**/AUTHORS
