@@ -1,32 +1,39 @@
 services:
   api:
-    container_name: api-ucskws8osg0gokw0888ok4go-043122645167
+    container_name: cicero-api-${INSTANCE_ID:-default}
     ports:
-      - 3080:3080
+      - "${PORT:-3080}:3080"
     depends_on:
       - mongodb
+      - meilisearch
       - rag_api
     image: arthrod82/cicero-dev:latest
     restart: always
     environment:
       - HOST=0.0.0.0
-      - MONGO_URI=mongodb://mongodb:27017/LibreChat
+      - MONGO_URI=mongodb://mongodb:27017/cicero
       - MEILI_HOST=http://meilisearch:7700
       - RAG_PORT=${RAG_PORT:-8000}
       - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
     volumes:
+      - type: bind
+        source: ./.env
+        target: /app/.env
       - images:/app/client/public/images
       - logs:/app/api/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   mongodb:
-    container_name: mongodb-ucskws8osg0gokw0888ok4go-043122645167
-    image: mongo
+    container_name: cicero-mongodb-${INSTANCE_ID:-default}
+    image: mongo:latest
     restart: always
+    command: mongod --noauth
     volumes:
       - mongo_data:/data/db
 
   meilisearch:
-    container_name: meilisearch-ucskws8osg0gokw0888ok4go-043122645167
+    container_name: cicero-meilisearch-${INSTANCE_ID:-default}
     image: getmeili/meilisearch:v1.7.3
     restart: always
     environment:
@@ -35,29 +42,37 @@ services:
       - meili_data:/meili_data
 
   vectordb:
-    container_name: vectordb-ucskws8osg0gokw0888ok4go-043122645167
+    container_name: cicero-vectordb-${INSTANCE_ID:-default}
     image: ankane/pgvector:latest
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: cicero_db
+      POSTGRES_USER: ${POSTGRES_USER:-cicero}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cicero_password}
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
 
   rag_api:
-    container_name: rag_api-ucskws8osg0gokw0888ok4go-043122645167
+    container_name: cicero-rag-${INSTANCE_ID:-default}
     image: ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest
     environment:
       - DB_HOST=vectordb
       - RAG_PORT=${RAG_PORT:-8000}
+      - POSTGRES_DB=cicero_db
+      - POSTGRES_USER=${POSTGRES_USER:-cicero}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-cicero_password}
     restart: always
     depends_on:
       - vectordb
 
 volumes:
   mongo_data:
+    name: cicero-mongo-${INSTANCE_ID:-default}
   meili_data:
+    name: cicero-meili-${INSTANCE_ID:-default}
   pgdata:
+    name: cicero-pg-${INSTANCE_ID:-default}
   images:
+    name: cicero-images-${INSTANCE_ID:-default}
   logs:
+    name: cicero-logs-${INSTANCE_ID:-default}
