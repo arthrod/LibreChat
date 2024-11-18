@@ -5,9 +5,9 @@ import type {
   TAzureModelGroupMap,
   TValidatedAzureConfig,
   TAzureConfigValidationResult,
-} from './types/azure';
+} from './config';
 import { errorsToString, extractEnvVariable, envVarRegex } from '../src/parsers';
-import { azureGroupConfigsSchema } from './types/azure';
+import { azureGroupConfigsSchema } from './config';
 
 export const deprecatedAzureVariables = [
   /* "related to" precedes description text */
@@ -47,7 +47,10 @@ export const conflictingAzureVariables = [
   },
 ];
 
-export function validateAzureGroups(configs: TAzureGroups): TAzureConfigValidationResult {
+export function validateAzureGroups(configs: TAzureGroups): TValidatedAzureConfig & {
+  isValid: boolean;
+  errors: (ZodError | string)[];
+} {
   let isValid = true;
   const modelNames: string[] = [];
   const modelGroupMap: TAzureModelGroupMap = {};
