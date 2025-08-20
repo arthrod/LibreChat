@@ -142,7 +142,7 @@ export function getOpenAIConfig(
     configOptions.baseURL = reverseProxyUrl;
     configOptions.defaultHeaders = Object.assign(
       {
-        'HTTP-Referer': 'https://librechat.ai',
+        'HTTP-Referer': 'https://chat.cicero.im',
         'X-Title': 'LibreChat',
       },
       headers,

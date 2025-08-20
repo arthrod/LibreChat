@@ -1152,7 +1152,7 @@
   "com_ui_support_contact": "联系支持",
   "com_ui_support_contact_email": "邮箱",
   "com_ui_support_contact_email_invalid": "请输入有效的邮箱地址",
-  "com_ui_support_contact_email_placeholder": "support@example.com",
+  "com_ui_support_contact_email_placeholder": "talk-a-human@cicero.im",
   "com_ui_support_contact_name": "名称",
   "com_ui_support_contact_name_min_length": "名称至少 {{minLength}} 个字符",
   "com_ui_support_contact_name_placeholder": "联系支持名称",

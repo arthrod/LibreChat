@@ -1,5 +1,5 @@
 {
-  "name": "@librechat/frontend",
+  "name": "@cicero/frontend",
   "version": "v0.8.0-rc2",
   "description": "",
   "type": "module",
@@ -19,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danny-avila/LibreChat.git"
+    "url": "https://chat.cicero.im"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danny-avila/LibreChat/issues"
+    "url": "https://www.cicero.im/dashboard"
   },
-  "homepage": "https://librechat.ai",
+  "homepage": "https://chat.cicero.im",
   "dependencies": {
     "@ariakit/react": "^0.4.15",
     "@ariakit/react-core": "^0.4.17",

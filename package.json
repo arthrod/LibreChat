@@ -1,5 +1,5 @@
 {
-  "name": "LibreChat",
+  "name": "cicero-assistant",
   "version": "v0.8.0-rc2",
   "description": "",
   "workspaces": [
@@ -84,14 +84,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danny-avila/LibreChat.git"
+    "url": "https://chat.cicero.im"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danny-avila/LibreChat/issues"
+    "url": "https://www.cicero.im/dashboard"
   },
-  "homepage": "https://librechat.ai/",
+  "homepage": "https://chat.cicero.im",
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
     "@eslint/compat": "^1.2.6",

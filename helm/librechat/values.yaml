@@ -34,7 +34,7 @@ librechat:
     # - MEILI_MASTER_KEY
   existingSecretName: "librechat-credentials-env"
   
-  # For adding a custom config yaml-file you can set the contents in this var. See https://www.librechat.ai/docs/configuration/librechat_yaml/example
+  # For adding a custom config yaml-file you can set the contents in this var. See https://www.cicero.im/dashboard
   configYamlContent: ""
   # configYamlContent: |
   #   version: 1.0.8
@@ -44,12 +44,12 @@ librechat:
   #   interface:
   #     # Privacy policy settings
   #     privacyPolicy:
-  #       externalUrl: 'https://librechat.ai/privacy-policy'
+  #       externalUrl: 'https://www.cicero.im/dashboard'
   #       openNewTab: true
 
   #     # Terms of service
   #     termsOfService:
-  #       externalUrl: 'https://librechat.ai/tos'
+  #       externalUrl: 'https://www.cicero.im/dashboard'
   #       openNewTab: true
 
   #   registration:
