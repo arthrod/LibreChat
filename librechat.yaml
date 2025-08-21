@@ -1,0 +1,101 @@
+
+version: 1.2.1
+
+
+interface:
+  customWelcome: 'Welcome to Cicero! Your AI-powered assistant.'
+  appTitle: 'Cicero'
+
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: 'https://cicero.im/legal/privacy'
+    openNewTab: true
+
+  # Terms of service
+  termsOfService:
+    externalUrl: 'https://cicero.im/legal'
+    openNewTab: true
+    modalAcceptance: false  # Set to true if you want users to accept terms on first login
+
+  # Interface features
+  endpointsMenu: true
+  modelSelect: true
+  parameters: true
+  sidePanel: true
+  presets: true
+  prompts: true
+  bookmarks: true
+  multiConvo: true
+  agents: true
+  peoplePicker:
+    users: true
+    groups: true
+    roles: true
+  marketplace:
+    use: false
+  fileCitations: true
+  fileSearch: true
+
+# Registration configuration - enabling OpenID
+registration:
+  socialLogins: ['openid']  # Only OpenID enabled since that's what you're configuring
+  # If you want to restrict to specific email domains, uncomment and modify:
+  # allowedDomains:
+  #   - "cicero.im"
+  #   - "cicero.chat"
+
+# Balance settings (using your existing environment variables)
+balance:
+  enabled: true
+  startBalance: 20000  # Matches your START_BALANCE env var
+  autoRefillEnabled: false
+  # refillIntervalValue: 30
+  # refillIntervalUnit: 'days'
+  # refillAmount: 10000
+
+# Actions configuration
+actions:
+  allowedDomains:
+    - 'cicero.im'
+    - 'google.com'
+    - 'github.com'
+    - 'trycloudflare.com'
+    - 'auth0.com'
+    - 'cloudflare.com'
+    - 'localhost'
+
+# File configuration
+fileConfig:
+  serverFileSizeLimit: 100  # Global server file size limit in MB
+  avatarSizeLimit: 2  # Limit for user avatar image size in MB
+  endpoints:
+    default:
+      fileLimit: 10
+      fileSizeLimit: 10  # Maximum size for an individual file in MB
+      totalSizeLimit: 50  # Maximum total size for all files in a single request in MB
+
+# Endpoints configuration
+endpoints:
+  assistants:
+    disableBuilder: false
+    pollIntervalMs: 3000
+    timeoutMs: 180000
+    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+
+  agents:
+    recursionLimit: 25
+    maxRecursionLimit: 50
+    disableBuilder: false
+    maxCitations: 30
+    maxCitationsPerFile: 7
+    minRelevanceScore: 0.45
+    capabilities: ["execute_code", "file_search", "actions", "tools"]
+
+  # Add any custom endpoints here if needed
+  # custom:
+  #   - name: 'custom-model'
+  #     apiKey: '${CUSTOM_API_KEY}'
+  #     baseURL: 'https://api.example.com/v1/'
+  #     models:
+  #       default: ['model-name']
+  #       fetch: false
