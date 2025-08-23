@@ -88,7 +88,7 @@
     "lodash": "^4.17.21",
     "meilisearch": "^0.38.0",
     "memorystore": "^1.6.7",
-    "mime": "^3.0.0",
+    "mime": "^4.0.7",
     "module-alias": "^2.2.3",
     "mongoose": "^8.12.1",
     "multer": "^2.0.2",
