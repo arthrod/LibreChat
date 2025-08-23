@@ -114,7 +114,7 @@ describe('getOpenAIConfig', () => {
 
     expect(result.configOptions?.baseURL).toBe(reverseProxyUrl);
     expect(result.configOptions?.defaultHeaders).toMatchObject({
-      'HTTP-Referer': 'https://librechat.ai',
+      'HTTP-Referer': 'https://chat.cicero.im',
       'X-Title': 'LibreChat',
     });
     expect(result.llmConfig.include_reasoning).toBe(true);
